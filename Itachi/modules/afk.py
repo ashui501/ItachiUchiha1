@@ -21,7 +21,8 @@ async def put_cleanmode(chat_id, message_id):
     cleanmode[chat_id].append(put)
 
 @Client.on_message(filters.command(["afk" , "brb"]))
-@Client.on_message(filters.regex(["brb" , "Brb"]))
+@Client.on_message(filters.regex("brb"))
+@Client.on_message(filters.regex("Brb"))
 async def active_afk(self: app, ctx: Message, strings):
     if ctx.sender_chat:
         return await ctx.reply_msg(strings("no_channel"), del_in=6)
