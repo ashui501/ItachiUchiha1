@@ -222,7 +222,7 @@ async def chat_watcher_func(self: app, ctx: Message):
             if afktype == "text":
                 msg += "{} was afk for {}.".format(user_name, seenago)
             if afktype == "text_reason":
-                msg += "{} was afk for {}.\nreason : {}"..format(user_name, seenago, reasonafk)
+                msg += "{} was afk for {}.\nreason : {}".format(user_name, seenago, reasonafk)
             if afktype == "animation":
                 if str(reasonafk) == "None":
                     send = await ctx.reply_animation(
