@@ -1,6 +1,6 @@
 from Itachi import db
 
-usersdb = db.users
+usersdb = db.afk
 cleandb = db.cleanmode
 cleanmode = {}
 
