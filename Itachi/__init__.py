@@ -83,7 +83,7 @@ async def init():
     x =  db.sudo.find().to_list(length=None)
     for i in await x :
         config.SUDO_USERS.append(i["user_id"])
-    config.SUPREME_USERS.extend(SUDO_USERS)
+    config.SUPER_USERS.extend(SUDO_USERS)
     msg = "Sudo Users :-\n"
     for m in set(SUDO_USERS):
         try:
