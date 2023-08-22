@@ -6,7 +6,6 @@ from Itachi.modules.mongo.afk_db import add_afk, cleanmode_off, cleanmode_on, is
 from Itachi import *
 from Itachi.modules.pyro.status import user_admin
 from Itachi import get_readable_time as get_readable_time2
-from utils import put_cleanmode
 from datetime import datetime, timedelta
 
 
