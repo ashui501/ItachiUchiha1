@@ -15,6 +15,8 @@ DEV_USERS = list(map(int, getenv("DEV_USERS", "5565211830").split()))
 SUDO_USERS = list(map(int, getenv("SUDO_USERS", "1811267624").split()))
 ARQ_API_KEY = getenv('ARQ_API_KEY','DARMXR-EKRMBT-BHPDOP-UASHHF-ARQ')
 DONATION_LINK = getenv('DONATION_LINK','https://t.me/ImmortalsXKing')
+SUPER_USERS = DEV_USERS + SUDO_USERS
 if OWNER_ID not in DEV_USERS:
     DEV_USERS.append(OWNER_ID)
+    
 
