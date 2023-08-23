@@ -2,10 +2,7 @@ import time
 import os
 from Itachi import app,LOG,BOT_ID,get_readable_time
 from pyrogram import filters,enums, Client 
-from Itachi.modules.pyro.status import (
-    bot_admin,
-    user_admin,
-    user_has_permission)
+from Itachi.modules.pyro.status import *
 from Itachi.modules.pyro.extracting_id import (
     extract_user_id,
     get_id_reason_or_rank,
@@ -51,7 +48,7 @@ async def _botlist(_, message):
 @Client.on_message(filters.command(["promote","fullpromote"]))
 @control_user()
 @user_admin
-@bot_admin                  
+@bot_can_promote        
 async def _promote(_, message):
     chat_id = message.chat.id
     chat_title = message.chat.title
@@ -121,7 +118,7 @@ async def _promote(_, message):
 @Client.on_message(filters.command("demote"))
 @control_user()
 @user_admin
-@bot_admin  
+@bot_can_promote
 async def _demote(_, message):
     chat_id = message.chat.id
     chat_title = message.chat.title
@@ -155,7 +152,7 @@ async def _demote(_, message):
 @Client.on_message(filters.command("invitelink"))
 @control_user()                  
 @user_admin
-@bot_admin
+@bot_can_change_info
 async def _invitelink(_,message):
     chat_id = message.chat.id
     BOT = await app.get_chat_member(chat_id, BOT_ID)
@@ -181,7 +178,7 @@ async def _invitelink(_,message):
 @Client.on_message(filters.command(["setgtitle","setgdesc","title"]))
 @control_user()
 @user_admin
-@bot_admin
+@bot_can_change_info
 async def g_title_desc(_,message):  
     chat_id = message.chat.id
     replied = message.reply_to_message
@@ -245,7 +242,7 @@ async def g_title_desc(_,message):
 @Client.on_message(filters.command(["setgpic","delgpic"]))
 @control_user()
 @user_admin
-@bot_admin
+@bot_can_change_info
 async def g_pic(_,message):
     chat_id = message.chat.id
     replied = message.reply_to_message
