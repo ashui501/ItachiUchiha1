@@ -72,7 +72,7 @@ async def active_afk(self: app, ctx: Message):
                 )
         except Exception:
             send = await ctx.reply_text(
-                "{} is back!".format(usr=ctx.from_user.first_name),
+                "{} is back!".format(ctx.from_user.first_name),
                 disable_web_page_preview=True,
             )
         await put_cleanmode(ctx.chat.id, send.id)
