@@ -27,7 +27,7 @@ from unidecode import unidecode
 from Itachi import StartTime , get_readable_time
 loop = asyncio.get_event_loop() 
 
-ITACHI_PIC = ["https://telegra.ph/file/2621c354a31656ef5381a.jpg" , "https://te.legra.ph/file/727d6520eb931f32a61ac.jpg" ,  "https://te.legra.ph/file/b90c6dd4615f2cb513f09.jpg" , "https://te.legra.ph/file/4d057553d1ada3fc1d0dc.jpg" , "https://te.legra.ph/file/e792fa6a02d4a86b2a2e3.jpg"]
+ITACHI_PIC = ["https://telegra.ph/file/2621c354a31656ef5381a.jpg" , "https://te.legra.ph/file/727d6520eb931f32a61ac.jpg" ,  "https://te.legra.ph/file/b90c6dd4615f2cb513f09.jpg" , "https://te.legra.ph/file/4d057553d1ada3fc1d0dc.jpg" , "https://te.legra.ph/file/e792fa6a02d4a86b2a2e3.jpg","https://telegra.ph/file/f546e6681709b03255f00.jpg","https://telegra.ph/file/607c2911f1dc48d40a4e9.jpg","https://telegra.ph/file/1355fde2a2c876810ad02.jpg","https://telegra.ph/file/8b78e64eda3f0af73e186.jpg","https://telegra.ph/file/fa1aab224fb2cbc08f47b.jpg","https://telegra.ph/file/f546e6681709b03255f00.jpg"]
 
 uptime = get_readable_time((time.time() - StartTime))
 IMPORTED = {}
@@ -60,6 +60,7 @@ async def main():
                              caption=strings.SUPPORT_SEND_MSG.format(platform.python_version(), pyrover, uptime)
                              )
         await ALPHA.send_message(config.OWNER_ID , "Started")
+        await ubot.send_message(f"{config.SUPPORT_CHAT}" , "Userbot Started ✨")
     except Exception as e:
         LOG.print(f"{e}")
         LOG.print(f"Bot isn't able to send message to @{config.SUPPORT_CHAT} !")
