@@ -11,8 +11,6 @@ from pyrogram.types import Message
 from functools import wraps
 from dotmap import DotMap
 
-from Miku.modules.mongo.lang_db import *
-
 DISABLE_COMMANDS = []
 COMMANDS_LIST = []
 ERROR_LOG = "MikuLog"
