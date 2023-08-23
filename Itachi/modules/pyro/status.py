@@ -30,12 +30,12 @@ COMMANDERS = [ChatMemberStatus.ADMINISTRATOR,ChatMemberStatus.OWNER]
 
 
 
-async def user_has_permission(chat_title : str, chat_id: int, user_id: int, permission: str,bot=True) -> tuple[bool, str]:
+async def user_has_permission(chat_title : str, chat_id: int, username, permission: str,bot=True) -> tuple[bool, str]:
     try:
         if user_id in SUPER_USERS:
             have_permission = True
         else:
-            chat_member = await app.get_chat_member(chat_id, user_id)
+            chat_member = await ubot.get_chat_member(chat_id, username)
             chat_permissions = chat_member.privileges
             if permission == "can_delete_messages":
                 have_permission = chat_permissions.can_delete_messages
@@ -157,9 +157,10 @@ def user_admin(mystic):
                 return await message.reply_text("**You Aren't An Admin.**")
                 
         else:
-            user_id = message.from_user.id    
+            username = message.from_user.username    
+            user_id = message.from_user.id
             chat_id = message.chat.id
-            user = await app.get_chat_member(chat_id,user_id) 
+            user = await ubot.get_chat_member(chat_id,username) 
         
             if (user.status not in COMMANDERS) and user_id not in SUPER_USERS:
                 return await message.reply_text("**You Aren't An Admin.**")
@@ -172,8 +173,9 @@ def user_can_ban(mystic):
     @wraps(mystic)
     async def wrapper(app : Client, message : Message,*args,**kwargs):
         user_id = message.from_user.id
+        username = message.from_user.username
         chat_id = message.chat.id
-        user = await app.get_chat_member(chat_id,user_id)
+        user = await ubot.get_chat_member(chat_id,username)
         
         if (user.privileges and not user.privileges.can_restrict_members) and user_id not in SUPER_USERS: 
 
@@ -187,7 +189,8 @@ def user_can_del(mystic):
     async def wrapper(app : Client, message : Message,*args,**kwargs):
         user_id = message.from_user.id
         chat_id = message.chat.id
-        user = await app.get_chat_member(chat_id,user_id)
+        username = message.from_user.username
+        user = await ubot.get_chat_member(chat_id,username)
         
         if (user.status in COMMANDERS and not user.privileges.can_delete_messages) and user_id not in SUPREME_USERS:                     
             return await message.reply_text("**You Don't Have Rights To Delete Messages. Sorry Can't Perform This Action.**") 
@@ -201,7 +204,8 @@ def user_can_change_info(mystic):
     async def wrapper(app : Client, message : Message,*args,**kwargs):
         user_id = message.from_user.id
         chat_id = message.chat.id
-        user = await app.get_chat_member(chat_id,user_id)
+        username = message.from_user.username
+        user = await ubot.get_chat_member(chat_id,username)
         
         if (user.status in COMMANDERS and not user.privileges.can_change_info) and user_id not in SUPREME_USERS:                     
             return await message.reply_text("**You Don't Have Rights To Change Info. Sorry Can't Perform This Action.**") 
@@ -214,7 +218,8 @@ def user_can_promote(mystic):
     async def wrapper(app : Client, message : Message,*args,**kwargs):
         user_id = message.from_user.id
         chat_id = message.chat.id
-        user = await app.get_chat_member(chat_id,user_id)
+        username = message.from_user.username
+        user = await ubot.get_chat_member(chat_id,username)
         
         if (user.status in COMMANDERS and not user.privileges.can_promote_members) and user_id not in SUPREME_USERS:                     
             return await message.reply_text("**You Don't Have Rights To Promote Users. Sorry Can't Perform This Action.**") 
