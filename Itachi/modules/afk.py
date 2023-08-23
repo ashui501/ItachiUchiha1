@@ -25,7 +25,7 @@ async def put_cleanmode(chat_id, message_id):
 @Client.on_message(filters.regex("Brb"))
 async def active_afk(self: app, ctx: Message):
     if ctx.sender_chat:
-        return await ctx.reply_msg("**Channels can't be afk!**")
+        return await ctx.reply_text("**Channels can't be afk!**")
     user_id = ctx.from_user.id
     verifier, reasondb = await is_afk(user_id)
     if verifier:
@@ -168,7 +168,7 @@ async def active_afk(self: app, ctx: Message):
         }
 
     await add_afk(user_id, details)
-    send = await ctx.reply_msg("{} is now afk!".format(ctx.from_user.mention))
+    send = await ctx.reply_text("{} is now afk!".format(ctx.from_user.mention))
     await put_cleanmode(ctx.chat.id, send.id)
 
 
@@ -182,10 +182,10 @@ async def afk_state(self: app, ctx: Message):
     state = state.lower()
     if state == "enable":
         await cleanmode_on(chat_id)
-        await ctx.reply_msg("afk delete enbled!")
+        await ctx.reply_text("afk delete enbled!")
     elif state == "disable":
         await cleanmode_off(chat_id)
-        await ctx.reply_msg("afk delete disabled!")
+        await ctx.reply_text("afk delete disabled!")
 
 # Detect user that AFK based on Yukki Repo
 @Client.on_message(
