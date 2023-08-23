@@ -3,7 +3,7 @@ from pyrogram import Client
 from pyrogram.types import Message
 from pyrogram.enums import ChatMemberStatus
 from Itachi import BOT_ID,ubot,app,BOT_NAME,BOT_USERNAME as b
-BOT_USERNAME = f"@{b}"
+BOT_USERNAME = "Itachi_UchihaXBot"
 from Itachi.config import SUPER_USERS
 from pyrogram.enums import ChatType
 
