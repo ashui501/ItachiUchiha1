@@ -10,7 +10,7 @@ from typing import List, Union, Callable
 from pyrogram.types import Message
 from functools import wraps
 from dotmap import DotMap
-from lang import get_string
+
 from Miku.modules.mongo.lang_db import *
 
 DISABLE_COMMANDS = []
@@ -18,21 +18,7 @@ COMMANDS_LIST = []
 ERROR_LOG = "MikuLog"
 HANDLERS = ["/","?","!"]
 
-def language(func):
-    @wraps(func)
-    async def wrapper(_, update):
-        if isinstance(update,types.Message):
-            chat_id = update.chat.id
-        if isinstance(update,types.CallbackQuery):
-            chat_id= update.message.chat.id
-        try:
-            language = await get_lang(chat_id)
-            language = get_string(language)
-        except:
-            language = get_string("en")
-        language = DotMap(language) 
-        return await func(_,update, language)
-    return wrapper
+
 
 
 def control_user(max_messages: int = 3, interval: float = 1.5):
