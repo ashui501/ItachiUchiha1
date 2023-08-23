@@ -2,7 +2,7 @@ from functools import wraps
 from pyrogram import Client
 from pyrogram.types import Message
 from pyrogram.enums import ChatMemberStatus
-from Itachi import BOT_ID,ubot as app,BOT_NAME
+from Itachi import BOT_ID,ubot,app,BOT_NAME,BOT_USERNAME
 from Itachi.config import SUPER_USERS
 from pyrogram.enums import ChatType
 
@@ -66,7 +66,7 @@ async def user_has_permission(chat_title : str, chat_id: int, user_id: int, perm
 
     if not have_permission:
         if bot:
-            txt = f"**{BOT_NAME} Doesn'tDoes The Permission:\n__{permission}__\nIn {chat_title}. Please Give Me The Permission To Perform This Action.**"
+            txt = f"**{BOT_NAME} Don't have The Permission:\n__{permission}__\nIn {chat_title}. Please Give Me The Permission To Perform This Action.**"
         else:
             txt = f"**You Don't Have The Permission:\n{permission}\nɪɴ {chat_title}.So I Won't Be Able To Perform This Action.**"
         return have_permission, txt
@@ -80,7 +80,7 @@ def bot_admin(func):
         chat_type = message.chat.type
         if chat_type == ChatType.PRIVATE:
             return await message.reply("**This Command Was Made For Groups Not Private**")
-        BOT = await app.get_chat_member(message.chat.id,BOT_ID)                 
+        BOT = await ubot.get_chat_member(message.chat.id,BOT_USERNAME)                 
         if BOT.status != ChatMemberStatus.ADMINISTRATOR:                                       
             await message.reply_text(f"**{BOT_NAME} Isn't Admin In {message.chat.title}**")
             return 
@@ -90,7 +90,7 @@ def bot_admin(func):
 def bot_can_ban(func):
     @wraps(func)
     async def can_restrict(app : Client, message : Message,*args,**kwargs):
-        BOT = await app.get_chat_member(message.chat.id,BOT_ID)
+        BOT = await ubot.get_chat_member(message.chat.id,BOT_USERNAME)
                  
         if not BOT.privileges.can_restrict_members:                        
             await message.reply_text(f"**{BOT_NAME} Has No Permission To Restrict In {message.chat.title}. Check And Give Me Rights💕**")
@@ -101,10 +101,10 @@ def bot_can_ban(func):
 def bot_can_change_info(func):
     @wraps(func)
     async def can_change_info(app : Client, message : Message,*args,**kwargs):
-        BOT = await app.get_chat_member(message.chat.id,BOT_ID)
+        BOT = await ubot.get_chat_member(message.chat.id,BOT_USERNAME)
 
         if not BOT.privileges.can_change_info:                         
-            await message.reply_text(f"**{BOT_NAME} Has Permission To Change Info In {message.chat.title}. Check And Give Me Rights💕**")
+            await message.reply_text(f"**{BOT_NAME} Has No Permission To Change Info In {message.chat.title}. Check And Give Me Rights💕**")
             return 
         return await func(app,message,*args,**kwargs)
     return can_change_info
@@ -113,7 +113,7 @@ def bot_can_change_info(func):
 def bot_can_promote(func):
     @wraps(func)
     async def can_promote(app : Client, message : Message,*args,**kwargs):
-        BOT = await app.get_chat_member(message.chat.id,BOT_ID)
+        BOT = await ubot.get_chat_member(message.chat.id,BOT_USERNAME)
 
         if not BOT.privileges.can_promote_members:                         
             await message.reply_text(f"**{BOT_NAME} Has No Permission To Promote Users In {message.chat.title}. Check And Give Me Rights💕**")
@@ -125,7 +125,7 @@ def bot_can_promote(func):
 def bot_can_pin(func):
     @wraps(func)
     async def can_pin(app : Client, message : Message,*args,**kwargs):
-        BOT = await app.get_chat_member(message.chat.id,BOT_ID)
+        BOT = await ubot.get_chat_member(message.chat.id,BOT_USERNAME)
 
         if not BOT.privileges.can_pin_messages:                         
             await message.reply_text(f"**{BOT_NAME} Has No Permission To Pin Messages In {message.chat.title}. Check And Give Me Rights💕**")
@@ -136,7 +136,7 @@ def bot_can_pin(func):
 def bot_can_del(func):
     @wraps(func)
     async def can_delete(app : Client, message : Message,*args,**kwargs):
-        BOT = await app.get_chat_member(message.chat.id,BOT_ID)
+        BOT = await ubot.get_chat_member(message.chat.id,BOT_USERNAME)
 
         if not BOT.privileges.can_delete_messages:                         
             await message.reply_text(f"**{BOT_NAME} Has No Permission To Delete Messages In {message.chat.title}. Check And Give Me Rights💕**")
