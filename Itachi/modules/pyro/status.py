@@ -2,7 +2,7 @@ from functools import wraps
 from pyrogram import Client
 from pyrogram.types import Message
 from pyrogram.enums import ChatMemberStatus
-from Itachi import BOT_ID,app,BOT_NAME
+from Itachi import BOT_ID,ubot as app,BOT_NAME
 from Itachi.config import SUPER_USERS
 from pyrogram.enums import ChatType
 
