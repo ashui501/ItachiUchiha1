@@ -15,6 +15,7 @@ from pyrogram.enums import MessageEntityType, ChatMemberStatus
 from pyrogram.types import ChatPrivileges, InlineKeyboardMarkup, InlineKeyboardButton ,CallbackQuery
 from pyrogram.errors import BadRequest
 from Itachi.config import SUPER_USERS as CHAD
+from Itachi.modules.pyro.decorators import control_user,command
 
 COMMANDERS = [ChatMemberStatus.ADMINISTRATOR,ChatMemberStatus.OWNER]
 
@@ -34,19 +35,21 @@ DEMOTE = ChatPrivileges(
     
 
     
-@Client.on_message(filters.command("bots") & filters.group)        
+@Client.on_message(filters.command("bots"))
+@control_user()                  
 @user_admin
 async def _botlist(_, message):       
     chat_title = message.chat.title 
     chat_id = message.chat.id 
     repl = await message.reply("**Initialising Bots For This Chat...**")                                        
-    header = f"**× Bots\n\n**"    
+    header = f"**Ã— Bots\n\n**"    
     async for m in app.get_chat_members(chat_id, filter=enums.ChatMembersFilter.BOTS):
-        header += f"**• {m.user.mention}\n**"
+        header += f"**â€¢ {m.user.mention}\n**"
     await repl.edit(f"{header}\n\n")
 
         
 @Client.on_message(filters.command(["promote","fullpromote"]))
+@control_user()
 @user_admin
 @bot_admin                  
 async def _promote(_, message):
@@ -76,6 +79,7 @@ async def _promote(_, message):
         await message.reply_text("**User Is Already An Admin So Can't Promote Him/Her Again.**")
         return
     user_mention = (await app.get_users(user_id)).mention
+    btn = InlineKeyboardMarkup([[InlineKeyboardButton(text="Close âŒ", callback_data=f"puserclose_{from_user.id}")]])   
     if message.command[0] == "promote":
         POWER = ChatPrivileges(
             can_change_info=False,
@@ -87,7 +91,7 @@ async def _promote(_, message):
             can_manage_chat=bot.privileges.can_manage_chat,
             can_manage_video_chats=bot.privileges.can_manage_video_chats,
             )         
-        msg = f"**× Appointed !\n\n• User : {user_mention}\n• Admin : {from_user.mention}**"
+        msg = f"**Ã— Appointed !\n\nâ€¢ User : {user_mention}\nâ€¢ Admin : {from_user.mention}**"
 
     elif message.command[0] == "fullpromote":   
         POWER = ChatPrivileges(
@@ -100,13 +104,13 @@ async def _promote(_, message):
             can_manage_chat=bot.privileges.can_manage_chat,
             can_manage_video_chats=bot.privileges.can_manage_video_chats, 
              )                    
-        msg = f"**× Fully Appointed !\n\n• User : {user_mention}\n• Admin : {from_user.mention}\n**" 
+        msg = f"**Ã— Fully Appointed !\n\nâ€¢ User : {user_mention}\nâ€¢ Admin : {from_user.mention}\n**" 
     
     try:
         await app.promote_chat_member(chat_id, user_id,POWER)           
         if title != None:
             await app.set_administrator_title(chat_id, user_id,title)
-        return await message.reply_text(msg)    
+        return await message.reply_text(msg,reply_markup=btn)    
     except BadRequest as excp:
         await message.reply_text(f"**{excp.message}.**")
            
@@ -115,6 +119,7 @@ async def _promote(_, message):
             
 
 @Client.on_message(filters.command("demote"))
+@control_user()
 @user_admin
 @bot_admin  
 async def _demote(_, message):
@@ -147,7 +152,8 @@ async def _demote(_, message):
         await message.reply_text(f"**{excp.message}.**")           
 
 
-@Client.on_message(filters.command("invitelink"))          
+@Client.on_message(filters.command("invitelink"))
+@control_user()                  
 @user_admin
 @bot_admin
 async def _invitelink(_,message):
@@ -173,6 +179,7 @@ async def _invitelink(_,message):
 
                                
 @Client.on_message(filters.command(["setgtitle","setgdesc","title"]))
+@control_user()
 @user_admin
 @bot_admin
 async def g_title_desc(_,message):  
@@ -236,6 +243,7 @@ async def g_title_desc(_,message):
     
                                    
 @Client.on_message(filters.command(["setgpic","delgpic"]))
+@control_user()
 @user_admin
 @bot_admin
 async def g_pic(_,message):
@@ -277,6 +285,7 @@ async def g_pic(_,message):
 
 
 @Client.on_message(filters.command(["adminlist","admins"]))
+@control_user()                  
 async def _adminlist(_, message):  
     if message.chat.type == enums.ChatType.PRIVATE:
         return await message.reply("**This Command Is Only Usable In Groups Not Private.**")
@@ -292,7 +301,7 @@ async def _adminlist(_, message):
             pass
         else:
             administrators.append(m)
-    text = f"**♣ Admins ♣"
+    text = f"**â™£ Admins â™£"
     custom_admin_list = {}
     normal_admin_list = []   
     for admin in administrators:
@@ -304,10 +313,10 @@ async def _adminlist(_, message):
             else:
                 name = f"**{user.mention}**"            
             if status == ChatMemberStatus.OWNER:
-                text += "**\n♠ Admins**"
-                text += f"**\n • {name}\n**"
+                text += "**\nâ™  Admins**"
+                text += f"**\n â€¢ {name}\n**"
                 if custom_title:
-                    text += f"**♦ {custom_title}\n**"
+                    text += f"**â™¦ {custom_title}\n**"
             if status == ChatMemberStatus.ADMINISTRATOR:
                 if custom_title:
                     try:
@@ -316,19 +325,19 @@ async def _adminlist(_, message):
                         custom_admin_list.update({custom_title: [name]})
                 else:
                     normal_admin_list.append(name)
-    text += "**\n ♣ Admins ♣**"
+    text += "**\n â™£ Admins â™£**"
     for admin in normal_admin_list:
-        text += f"**\n • {admin}**"
+        text += f"**\n â€¢ {admin}**"
     for admin_group in custom_admin_list.copy():
         if len(custom_admin_list[admin_group]) == 1:
-            text += f"**\n • {custom_admin_list[admin_group][0]} | {admin_group} **"
+            text += f"**\n â€¢ {custom_admin_list[admin_group][0]} | {admin_group} **"
                 
             custom_admin_list.pop(admin_group)
     text += "\n"
     for admin_group, value in custom_admin_list.items():
         text += f"**\n{admin_group} **"
         for admin in value:
-            text += f"**\n • {admin}**"
+            text += f"**\n â€¢ {admin}**"
         text += "\n"
     try:
         await repl.edit_text(text)
@@ -339,15 +348,15 @@ __help__ = """
 **Here is The Help For Admins**
 
 **Commands**
-♠ `/promote <user>` - Promote an user.
-♠ `/fullpromote <user>` - Promote an user with full rights.
-♠ `/demote <user>` - Demote an user.
-♠ `/setgtitle <title>` - Set the group title.
-♠ `/setgpic <reply to image>` - Set the group pfp.
-♠ `/delgpic <reply to image>` - Remove the group pfp.
-♠ `/setgdesc <text>` - Set the group description.
-♠ `/adminlist` - List of admins in the chat.
-♠ `/bots` - List of bots in the chat.
-♠ `/invitelink` - Get invite link of groups.
+♠  `/promote <user>` - Promote an user.
+♠  `/fullpromote <user>` - Promote an user with full rights.
+♠  `/demote <user>` - Demote an user.
+♠  `/setgtitle <title>` - Set the group title.
+♠  `/setgpic <reply to image>` - Set the group pfp.
+♠  `/delgpic <reply to image>` - Remove the group pfp.
+♠  `/setgdesc <text>` - Set the group description.
+♠  `/adminlist` - List of admins in the chat.
+♠  `/bots` - List of bots in the chat.
+♠  `/invitelink` - Get invite link of groups.
 """
 __mod_name__ = "Admins"
