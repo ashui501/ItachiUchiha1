@@ -2,7 +2,8 @@ from functools import wraps
 from pyrogram import Client
 from pyrogram.types import Message
 from pyrogram.enums import ChatMemberStatus
-from Itachi import BOT_ID,ubot,app,BOT_NAME,BOT_USERNAME
+from Itachi import BOT_ID,ubot,app,BOT_NAME,BOT_USERNAME as b
+BOT_USERNAME = f"@{b}"
 from Itachi.config import SUPER_USERS
 from pyrogram.enums import ChatType
 
@@ -35,7 +36,7 @@ async def user_has_permission(chat_title : str, chat_id: int, username, permissi
         if user_id in SUPER_USERS:
             have_permission = True
         else:
-            chat_member = await ubot.get_chat_member(chat_id, username)
+            chat_member = await ubot.get_chat_member(chat_id, f"@{username}")
             chat_permissions = chat_member.privileges
             if permission == "can_delete_messages":
                 have_permission = chat_permissions.can_delete_messages
