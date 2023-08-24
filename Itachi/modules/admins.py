@@ -1,8 +1,9 @@
 import time
 import os
-from Itachi import app,LOG,BOT_ID,get_readable_time
+from Itachi import app,LOG,BOT_ID,get_readable_time,BOT_NAME
 from pyrogram import filters,enums, Client 
 from Itachi.modules.pyro.status import *
+from Itachi.modules.pyro.permissions import *
 from Itachi.modules.pyro.extracting_id import (
     extract_user_id,
     get_id_reason_or_rank,
@@ -33,31 +34,34 @@ DEMOTE = ChatPrivileges(
 
     
 @Client.on_message(filters.command("bots"))
-@control_user()                  
-@user_admin
+@control_user()
 async def _botlist(_, message):       
     chat_title = message.chat.title 
     chat_id = message.chat.id 
     repl = await message.reply("**Initialising Bots For This Chat...**")                                        
-    header = f"**Ã— Bots\n\n**"    
+    header = f"**× Bots\n\n**"    
     async for m in app.get_chat_members(chat_id, filter=enums.ChatMembersFilter.BOTS):
-        header += f"**â€¢ {m.user.mention}\n**"
+        header += f"**• {m.user.mention}\n**"
     await repl.edit(f"{header}\n\n")
 
         
 @Client.on_message(filters.command(["promote","fullpromote"]))
-@control_user()
-@user_admin
-@bot_admin        
+@control_user()    
 async def _promote(_, message):
     chat_id = message.chat.id
     chat_title = message.chat.title
-    bpermission,btxt = await user_has_permission(chat_title,chat_id,BOT_ID,"can_promote_members")
-    upermission,utxt = await user_has_permission(chat_title,chat_id,message.from_user.id,"can_promote_members",bot=False)
-    if not bpermission:
-        return await message.reply(btxt)
-    if not upermission:
-        return await message.reply(utxt)
+    group = await is_group()
+    if not group:
+    	return await message.reply_text("**This Command Was Made For Group Not Private.**")
+    admin_user = await is_admin(message.chat.id , message.from_user.id)
+    if not admin_user:
+    	return await message.reply_text("**You Aren't An Admin.**")
+    can_promote = await can_promote(message.chat.id , message.from_user.id)
+    if not can_promote:
+    	return await message.reply_text("**You don't have permission to promote users.**")
+    can_bot = await can_promote(message.chat.id , BOT_ID)
+    if not can_bot:
+    	return await message.reply_text(f"**{BOT_NAME} has no permission to promote**")
     mm = await get_id_reason_or_rank(message)
     user_id = mm[0]
     title = mm[1]    
@@ -76,7 +80,7 @@ async def _promote(_, message):
         await message.reply_text("**User Is Already An Admin So Can't Promote Him/Her Again.**")
         return
     user_mention = (await app.get_users(user_id)).mention
-    btn = InlineKeyboardMarkup([[InlineKeyboardButton(text="Close âŒ", callback_data=f"puserclose_{from_user.id}")]])   
+    btn = InlineKeyboardMarkup([[InlineKeyboardButton(text="Close Ã¢ÂÅ’", callback_data=f"puserclose_{from_user.id}")]])   
     if message.command[0] == "promote":
         POWER = ChatPrivileges(
             can_change_info=False,
@@ -88,7 +92,7 @@ async def _promote(_, message):
             can_manage_chat=bot.privileges.can_manage_chat,
             can_manage_video_chats=bot.privileges.can_manage_video_chats,
             )         
-        msg = f"**Ã— Appointed !\n\nâ€¢ User : {user_mention}\nâ€¢ Admin : {from_user.mention}**"
+        msg = f"**Ãƒâ€” Appointed !\n\nÃ¢â‚¬Â¢ User : {user_mention}\nÃ¢â‚¬Â¢ Admin : {from_user.mention}**"
 
     elif message.command[0] == "fullpromote":   
         POWER = ChatPrivileges(
@@ -101,7 +105,7 @@ async def _promote(_, message):
             can_manage_chat=bot.privileges.can_manage_chat,
             can_manage_video_chats=bot.privileges.can_manage_video_chats, 
              )                    
-        msg = f"**Ã— Fully Appointed !\n\nâ€¢ User : {user_mention}\nâ€¢ Admin : {from_user.mention}\n**" 
+        msg = f"**Ãƒâ€” Fully Appointed !\n\nÃ¢â‚¬Â¢ User : {user_mention}\nÃ¢â‚¬Â¢ Admin : {from_user.mention}\n**" 
     
     try:
         await app.promote_chat_member(chat_id, user_id,POWER)           
@@ -298,7 +302,7 @@ async def _adminlist(_, message):
             pass
         else:
             administrators.append(m)
-    text = f"**â™£ Admins â™£"
+    text = f"**Ã¢â„¢Â£ Admins Ã¢â„¢Â£"
     custom_admin_list = {}
     normal_admin_list = []   
     for admin in administrators:
@@ -310,10 +314,10 @@ async def _adminlist(_, message):
             else:
                 name = f"**{user.mention}**"            
             if status == ChatMemberStatus.OWNER:
-                text += "**\nâ™  Admins**"
-                text += f"**\n â€¢ {name}\n**"
+                text += "**\nÃ¢â„¢  Admins**"
+                text += f"**\n Ã¢â‚¬Â¢ {name}\n**"
                 if custom_title:
-                    text += f"**â™¦ {custom_title}\n**"
+                    text += f"**Ã¢â„¢Â¦ {custom_title}\n**"
             if status == ChatMemberStatus.ADMINISTRATOR:
                 if custom_title:
                     try:
@@ -322,19 +326,19 @@ async def _adminlist(_, message):
                         custom_admin_list.update({custom_title: [name]})
                 else:
                     normal_admin_list.append(name)
-    text += "**\n â™£ Admins â™£**"
+    text += "**\n Ã¢â„¢Â£ Admins Ã¢â„¢Â£**"
     for admin in normal_admin_list:
-        text += f"**\n â€¢ {admin}**"
+        text += f"**\n Ã¢â‚¬Â¢ {admin}**"
     for admin_group in custom_admin_list.copy():
         if len(custom_admin_list[admin_group]) == 1:
-            text += f"**\n â€¢ {custom_admin_list[admin_group][0]} | {admin_group} **"
+            text += f"**\n Ã¢â‚¬Â¢ {custom_admin_list[admin_group][0]} | {admin_group} **"
                 
             custom_admin_list.pop(admin_group)
     text += "\n"
     for admin_group, value in custom_admin_list.items():
         text += f"**\n{admin_group} **"
         for admin in value:
-            text += f"**\n â€¢ {admin}**"
+            text += f"**\n Ã¢â‚¬Â¢ {admin}**"
         text += "\n"
     try:
         await repl.edit_text(text)
@@ -345,15 +349,15 @@ __help__ = """
 **Here is The Help For Admins**
 
 **Commands**
-♠  `/promote <user>` - Promote an user.
-♠  `/fullpromote <user>` - Promote an user with full rights.
-♠  `/demote <user>` - Demote an user.
-♠  `/setgtitle <title>` - Set the group title.
-♠  `/setgpic <reply to image>` - Set the group pfp.
-♠  `/delgpic <reply to image>` - Remove the group pfp.
-♠  `/setgdesc <text>` - Set the group description.
-♠  `/adminlist` - List of admins in the chat.
-♠  `/bots` - List of bots in the chat.
-♠  `/invitelink` - Get invite link of groups.
+â™   `/promote <user>` - Promote an user.
+â™   `/fullpromote <user>` - Promote an user with full rights.
+â™   `/demote <user>` - Demote an user.
+â™   `/setgtitle <title>` - Set the group title.
+â™   `/setgpic <reply to image>` - Set the group pfp.
+â™   `/delgpic <reply to image>` - Remove the group pfp.
+â™   `/setgdesc <text>` - Set the group description.
+â™   `/adminlist` - List of admins in the chat.
+â™   `/bots` - List of bots in the chat.
+â™   `/invitelink` - Get invite link of groups.
 """
 __mod_name__ = "Admins"
