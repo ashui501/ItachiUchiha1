@@ -62,20 +62,20 @@ UBOT_ID = 0
 arq = ARQ("arq.hamker.dev",ARQ_API_KEY, aiohttpsession)
 
 app = Client (
-      "ItachiUchiha",
+      "ItachiUchihaXXXX",
       api_id=API_ID,
       api_hash=API_HASH,
       bot_token=BOT_TOKEN,
       plugins=dict(root="Itachi/modules")
       )
 ALPHA = Client (
-      "Itachi",
+      "ItachiXX",
       api_id=API_ID,
       api_hash=API_HASH,
       bot_token=BOT_TOKEN
 )
 ubot = Client (
-      "Userbot",
+      "UserbotXXXXItachu",
       api_id=API_ID,
       api_hash=API_HASH,
       session_string=SESSION,
