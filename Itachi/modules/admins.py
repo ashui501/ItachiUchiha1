@@ -56,8 +56,8 @@ async def _promote(_, message):
     admin_user = await is_admin(message.chat.id , message.from_user.id)
     if not admin_user:
     	return await message.reply_text("**You Aren't An Admin.**")
-    can_promote = await can_promote(message.chat.id , message.from_user.id)
-    if not can_promote:
+    can_user = await can_promote(message.chat.id , message.from_user.id)
+    if not can_user:
     	return await message.reply_text("**You don't have permission to promote users.**")
     can_bot = await can_promote(message.chat.id , BOT_ID)
     if not can_bot:
