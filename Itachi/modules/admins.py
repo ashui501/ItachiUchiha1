@@ -92,7 +92,7 @@ async def _promote(_, message):
             can_manage_chat=bot.privileges.can_manage_chat,
             can_manage_video_chats=bot.privileges.can_manage_video_chats,
             )         
-        msg = f"**Ãƒâ€” Appointed !\n\nÃ¢â‚¬Â¢ User : {user_mention}\nÃ¢â‚¬Â¢ Admin : {from_user.mention}**"
+        msg = f"**♠ Appointed !\n\n• User : {user_mention}\n• Admin : {from_user.mention}**"
 
     elif message.command[0] == "fullpromote":   
         POWER = ChatPrivileges(
@@ -105,7 +105,7 @@ async def _promote(_, message):
             can_manage_chat=bot.privileges.can_manage_chat,
             can_manage_video_chats=bot.privileges.can_manage_video_chats, 
              )                    
-        msg = f"**Ãƒâ€” Fully Appointed !\n\nÃ¢â‚¬Â¢ User : {user_mention}\nÃ¢â‚¬Â¢ Admin : {from_user.mention}\n**" 
+        msg = f"**♠ Fully Appointed !\n\n• User : {user_mention}\n• Admin : {from_user.mention}\n**" 
     
     try:
         await app.promote_chat_member(chat_id, user_id,POWER)           
@@ -152,7 +152,7 @@ async def _demote(_, message):
     user_mention = xx.user.mention
     try : 
         await app.promote_chat_member(chat_id,user_id,DEMOTE)
-        await message.reply_text(f"**Demoted {user_mention}**")
+        await message.reply_text(f"**Demoted {user_mention}!**")
     except BadRequest as excp:
         await message.reply_text(f"**{excp.message}.**")           
 
@@ -168,10 +168,10 @@ async def _invitelink(_,message):
     admin_user = await is_admin(message.chat.id , message.from_user.id)
     if not admin_user:
     	return await message.reply_text("**You Aren't An Admin.**")
-    can_user = await can_promote(message.chat.id , message.from_user.id)
+    can_user = await can_invite(message.chat.id , message.from_user.id)
     if not can_user:
     	return await message.reply_text("**You don't have permission to get invite user.**")
-    can_bot = await can_promote(message.chat.id ,"Itachi_UchihaXBot")
+    can_bot = await can_invite(message.chat.id ,"Itachi_UchihaXBot")
     if not can_bot:
     	return await message.reply_text(f"**{BOT_NAME} has no permission to invite user.**")
     if message.chat.username:
@@ -194,18 +194,22 @@ async def _invitelink(_,message):
                                
 @Client.on_message(filters.command(["setgtitle","setgdesc","title"]))
 @control_user()
-@user_admin
-@bot_admin
 async def g_title_desc(_,message):  
     chat_id = message.chat.id
     replied = message.reply_to_message
-    chat_title = message.chat.title
-    bpermission,btxt = await user_has_permission(chat_title,chat_id,BOT_ID,"can_change_info")
-    upermission,utxt = await user_has_permission(chat_title,chat_id,message.from_user.id,"can_change_info",bot=False)
-    if not bpermission:
-        return await message.reply(btxt)
-    if not upermission:
-        return await message.reply(utxt)
+    mention = message.from_user.mention
+    group = await is_group(message.chat.type)
+    if not group:
+    	return await message.reply_text("**This Command Was Made For Group Not Private.**")
+    admin_user = await is_admin(message.chat.id , message.from_user.id)
+    if not admin_user:
+    	return await message.reply_text("**You Aren't An Admin.**")
+    can_user = await can_change_info(message.chat.id , message.from_user.id)
+    if not can_user:
+    	return await message.reply_text("**You don't have permission to change info.**")
+    can_bot = await can_change_info(message.chat.id ,"Itachi_UchihaXBot")
+    if not can_bot:
+    	return await message.reply_text(f"**{BOT_NAME} has no permission to change info.**")
     if message.command[0] == "setgtitle":       
         if len(message.command) < 2:
             await message.reply_text(f"**{mention} Give Me A Text To Add It As Group Title.**")  
@@ -258,17 +262,21 @@ async def g_title_desc(_,message):
                                    
 @Client.on_message(filters.command(["setgpic","delgpic"]))
 @control_user()
-@user_admin
-@bot_admin
 async def g_pic(_,message):
     chat_id = message.chat.id
     replied = message.reply_to_message
-    bpermission,btxt = await user_has_permission(chat_title,chat_id,BOT_ID,"can_change_info")
-    upermission,utxt = await user_has_permission(chat_title,chat_id,message.from_user.id,"can_change_info",bot=False)
-    if not bpermission:
-        return await message.reply(btxt)
-    if not upermission:
-        return await message.reply(utxt)  
+    group = await is_group(message.chat.type)
+    if not group:
+    	return await message.reply_text("**This Command Was Made For Group Not Private.**")
+    admin_user = await is_admin(message.chat.id , message.from_user.id)
+    if not admin_user:
+    	return await message.reply_text("**You Aren't An Admin.**")
+    can_user = await can_change_info(message.chat.id , message.from_user.id)
+    if not can_user:
+    	return await message.reply_text("**You don't have permission to change info.**")
+    can_bot = await can_change_info(message.chat.id ,"Itachi_UchihaXBot")
+    if not can_bot:
+    	return await message.reply_text(f"**{BOT_NAME} has no permission to change info.**")
     if message.command[0] == "setgpic":
         if replied :            
             if (replied.photo or replied.sticker) and not replied.sticker.is_animated:
@@ -315,7 +323,7 @@ async def _adminlist(_, message):
             pass
         else:
             administrators.append(m)
-    text = f"**Ã¢â„¢Â£ Admins Ã¢â„¢Â£"
+    text = f"**♠ Administration ♠\n\n"
     custom_admin_list = {}
     normal_admin_list = []   
     for admin in administrators:
@@ -327,10 +335,10 @@ async def _adminlist(_, message):
             else:
                 name = f"**{user.mention}**"            
             if status == ChatMemberStatus.OWNER:
-                text += "**\nÃ¢â„¢  Admins**"
-                text += f"**\n Ã¢â‚¬Â¢ {name}\n**"
+                text += "**\n× Admins**"
+                text += f"**\n• {name}\n**"
                 if custom_title:
-                    text += f"**Ã¢â„¢Â¦ {custom_title}\n**"
+                    text += f"**♦ {custom_title}\n**"
             if status == ChatMemberStatus.ADMINISTRATOR:
                 if custom_title:
                     try:
@@ -339,19 +347,19 @@ async def _adminlist(_, message):
                         custom_admin_list.update({custom_title: [name]})
                 else:
                     normal_admin_list.append(name)
-    text += "**\n Ã¢â„¢Â£ Admins Ã¢â„¢Â£**"
+    text += "**\n ♠ Admins ♠**"
     for admin in normal_admin_list:
-        text += f"**\n Ã¢â‚¬Â¢ {admin}**"
+        text += f"**\n• {admin}**"
     for admin_group in custom_admin_list.copy():
         if len(custom_admin_list[admin_group]) == 1:
-            text += f"**\n Ã¢â‚¬Â¢ {custom_admin_list[admin_group][0]} | {admin_group} **"
+            text += f"**\n ♦ {custom_admin_list[admin_group][0]} | {admin_group} **"
                 
             custom_admin_list.pop(admin_group)
     text += "\n"
     for admin_group, value in custom_admin_list.items():
         text += f"**\n{admin_group} **"
         for admin in value:
-            text += f"**\n Ã¢â‚¬Â¢ {admin}**"
+            text += f"**\n • {admin}**"
         text += "\n"
     try:
         await repl.edit_text(text)
@@ -362,15 +370,15 @@ __help__ = """
 **Here is The Help For Admins**
 
 **Commands**
-â™   `/promote <user>` - Promote an user.
-â™   `/fullpromote <user>` - Promote an user with full rights.
-â™   `/demote <user>` - Demote an user.
-â™   `/setgtitle <title>` - Set the group title.
-â™   `/setgpic <reply to image>` - Set the group pfp.
-â™   `/delgpic <reply to image>` - Remove the group pfp.
-â™   `/setgdesc <text>` - Set the group description.
-â™   `/adminlist` - List of admins in the chat.
-â™   `/bots` - List of bots in the chat.
-â™   `/invitelink` - Get invite link of groups.
+♠   `/promote <user>` - Promote an user.
+♠   `/fullpromote <user>` - Promote an user with full rights.
+♠   `/demote <user>` - Demote an user.
+♠   `/setgtitle <title>` - Set the group title.
+♠   `/setgpic <reply to image>` - Set the group pfp.
+♠   `/delgpic <reply to image>` - Remove the group pfp.
+♠   `/setgdesc <text>` - Set the group description.
+♠   `/adminlist` - List of admins in the chat.
+♠   `/bots` - List of bots in the chat.
+♠   `/invitelink` - Get invite link of groups.
 """
 __mod_name__ = "Admins"
