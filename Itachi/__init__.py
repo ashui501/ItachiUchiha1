@@ -74,19 +74,13 @@ ALPHA = Client (
       api_hash=API_HASH,
       bot_token=BOT_TOKEN
 )
-ubot = Client (
-      "UserbotXXXXItachu",
-      api_id=API_ID,
-      api_hash=API_HASH,
-      session_string=SESSION,
-      in_memory=True
-)
+
 async def init():
     global BOT_NAME,BOT_USERNAME,BOT_ID,MENTION_BOT
     LOG.print("Itachi Uchiha Bot Starting....")    
     await app.start()
     await ALPHA.start()
-    await ubot.start()
+    
     x =  db.sudo.find().to_list(length=None)
     for i in await x :
         config.SUDO_USERS.append(i["user_id"])
