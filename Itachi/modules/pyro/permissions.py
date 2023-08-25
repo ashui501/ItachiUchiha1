@@ -38,7 +38,7 @@ async def is_admin(chat, user):
                 return True
             else:
                 return False
-        except Execption as e:
+        except:
             return False
 
 async def can_promote(chat, user):
