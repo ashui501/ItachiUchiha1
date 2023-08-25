@@ -279,7 +279,7 @@ async def g_pic(_,message):
     	return await message.reply_text(f"**{BOT_NAME} has no permission to change info.**")
     if message.command[0] == "setgpic":
         if replied :            
-            if (replied.photo or replied.sticker) and not replied.sticker.is_animated:
+            if replied.photo or replied.sticker:
                 text = await message.reply_text("**Processing...**")  
                 g_pic = await replied.download()       
                 try:                    
