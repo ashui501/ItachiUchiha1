@@ -3,8 +3,8 @@ from Itachi.config import SUPER_USERS
 from pyrogram.enums import ChatMemberStatus, ChatType
 from pyrogram.types import Message
 
-async def is_group(message):
-    if message.chat.type == ChatType.PRIVATE:
+async def is_group(type):
+    if type == ChatType.PRIVATE:
         return False
     return True
 
