@@ -52,12 +52,9 @@ def get_readable_time(seconds: int) -> str:
 
 MOD_LOAD = []
 MOD_NOLOAD = []    
-BOT_NAME  = ""
-BOT_USERNAME = ""
-BOT_ID = 0
-MENTION_BOT = ""
-UMENTION = ""
-UBOT_ID = 0
+BOT_ID = 5520008350
+BOT_USERNAME = "Itachi_UchihaXBot"
+BOT_NAME = "Itachi Uchiha"
 
 arq = ARQ("arq.hamker.dev",ARQ_API_KEY, aiohttpsession)
 
@@ -76,7 +73,6 @@ ALPHA = Client (
 )
 
 async def init():
-    global BOT_NAME,BOT_USERNAME,BOT_ID,MENTION_BOT
     LOG.print("Itachi Uchiha Bot Starting....")    
     await app.start()
     await ALPHA.start()
@@ -93,11 +89,7 @@ async def init():
         except Exception as e:
             print(e)
     LOG.print(f"Loaded Sudo Users. :- \n\n{msg}") 
-    apps = await app.get_me()
-    BOT_ID = apps.id
-    BOT_USERNAME = apps.username  
-    BOT_NAME = apps.first_name
-    MENTION_BOT = apps.mention
+    
     LOG.print("Successfully Executed Everything.")
 
 loop.run_until_complete(init()) 
