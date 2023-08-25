@@ -50,7 +50,7 @@ async def _botlist(_, message):
 async def _promote(_, message):
     chat_id = message.chat.id
     chat_title = message.chat.title
-    group = await is_group()
+    group = await is_group(message.chat.type)
     if not group:
     	return await message.reply_text("**This Command Was Made For Group Not Private.**")
     admin_user = await is_admin(message.chat.id , message.from_user.id)
