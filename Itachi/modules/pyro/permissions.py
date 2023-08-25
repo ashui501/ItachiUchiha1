@@ -13,29 +13,32 @@ async def is_admin(chat, user):
     if user_id in SUPER_USERS:
         return True
     else:
-        chat_member = await app.get_chat_member(chat, user)
-        ctx = chat_member.privileges
-        if ctx.can_delete_messages:
-            return True
-        elif ctx.can_manage_chat:
-            return True
-        elif ctx.can_manage_video_chats:
-            return True
-        elif ctx.can_restrict_members:
-            return True
-        elif ctx.can_promote_members:
-            return True
-        elif ctx.can_change_info:
-            return True
-        elif ctx.can_post_messages:
-            return True
-        elif ctx.can_edit_messages:
-            return True
-        elif ctx.can_invite_users:
-            return True
-        elif ctx.can_pin_messages:
-            return True
-        else:
+        try:
+            chat_member = await app.get_chat_member(chat, user)
+            ctx = chat_member.privileges
+            if ctx.can_delete_messages:
+                return True
+            elif ctx.can_manage_chat:
+                return True
+            elif ctx.can_manage_video_chats:
+                return True
+            elif ctx.can_restrict_members:
+                return True
+            elif ctx.can_promote_members:
+                return True
+            elif ctx.can_change_info:
+                return True
+            elif ctx.can_post_messages:
+                return True
+            elif ctx.can_edit_messages:
+                return True
+            elif ctx.can_invite_users:
+                return True
+            elif ctx.can_pin_messages:
+                return True
+            else:
+                return False
+        except Execption as e:
             return False
 
 async def can_promote(chat, user):
