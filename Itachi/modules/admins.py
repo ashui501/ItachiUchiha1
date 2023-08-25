@@ -59,7 +59,7 @@ async def _promote(_, message):
     can_user = await can_promote(message.chat.id , message.from_user.id)
     if not can_user:
     	return await message.reply_text("**You don't have permission to promote users.**")
-    can_bot = await can_promote(message.chat.id , "Itachi_UchihaXBot")
+    can_bot = await can_promote(message.chat.id ,"Itachi_UchihaXBot")
     if not can_bot:
     	return await message.reply_text(f"**{BOT_NAME} has no permission to promote**")
     mm = await get_id_reason_or_rank(message)
