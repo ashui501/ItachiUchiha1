@@ -6,8 +6,8 @@ from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from Itachi import BOT_NAME, BOT_USERNAME, app
 from Itachi.__main__ import ITACHI_PIC
-from config import SUPPORT_CHAT, UPDATES_CHANNEL, OWNER_ID
-from .pyro.decorators import control_user, command
+from Itachi.config import SUPPORT_CHAT, UPDATES_CHANNEL, OWNER_ID
+from Itachi.modules.pyro.decorators import control_user, command
 
 
 ALIVE_TEXT = """**Hey I Am {}
