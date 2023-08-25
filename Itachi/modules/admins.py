@@ -66,7 +66,7 @@ async def _promote(_, message):
     user_id = mm[0]
     title = mm[1]    
     from_user = message.from_user 
-    bot = await _.get_chat_member(chat_id, BOT_ID)
+    bot = await _.get_chat_member(chat_id, "Itachi_UchihaXBot")
     chat = message.chat.title    
    
     if not user_id:
