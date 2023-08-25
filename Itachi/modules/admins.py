@@ -1,6 +1,6 @@
 import time
 import os
-from Itachi import app,LOG,BOT_ID,get_readable_time,BOT_NAME
+from Itachi import app,LOG,get_readable_time,BOT_NAME
 from pyrogram import filters,enums, Client 
 from Itachi.modules.pyro.status import *
 from Itachi.modules.pyro.permissions import *
@@ -8,7 +8,7 @@ from Itachi.modules.pyro.extracting_id import (
     extract_user_id,
     get_id_reason_or_rank,
     get_user_id )
-
+BOT_ID = "Itachi_UchihaXBot"
 from pyrogram.enums import MessageEntityType, ChatMemberStatus
 from pyrogram.types import ChatPrivileges, InlineKeyboardMarkup, InlineKeyboardButton ,CallbackQuery
 from pyrogram.errors import BadRequest
@@ -121,17 +121,21 @@ async def _promote(_, message):
 
 @Client.on_message(filters.command("demote"))
 @control_user()
-@user_admin
-@bot_admin
 async def _demote(_, message):
     chat_id = message.chat.id
     chat_title = message.chat.title
-    bpermission,btxt = await user_has_permission(chat_title,chat_id,BOT_ID,"can_promote_members")
-    upermission,utxt = await user_has_permission(chat_title,chat_id,message.from_user.id,"can_promote_members",bot=False)
-    if not bpermission:
-        return await message.reply(btxt)
-    if not upermission:
-        return await message.reply(utxt)
+    group = await is_group(message.chat.type)
+    if not group:
+    	return await message.reply_text("**This Command Was Made For Group Not Private.**")
+    admin_user = await is_admin(message.chat.id , message.from_user.id)
+    if not admin_user:
+    	return await message.reply_text("**You Aren't An Admin.**")
+    can_user = await can_promote(message.chat.id , message.from_user.id)
+    if not can_user:
+    	return await message.reply_text("**You don't have permission to demote users.**")
+    can_bot = await can_promote(message.chat.id ,"Itachi_UchihaXBot")
+    if not can_bot:
+    	return await message.reply_text(f"**{BOT_NAME} has no permission to demote**")
     user_id = await extract_user_id(message) 
        
     if not user_id:
@@ -155,13 +159,22 @@ async def _demote(_, message):
 
 @Client.on_message(filters.command("invitelink"))
 @control_user()                  
-@user_admin
-@bot_admin
 async def _invitelink(_,message):
     chat_id = message.chat.id
-    BOT = await app.get_chat_member(chat_id, BOT_ID)
-
-    if message.chat.username  :
+    BOT = await app.get_chat_member(chat_id, "Itachi_UchihaXBot")
+    group = await is_group(message.chat.type)
+    if not group:
+    	return await message.reply_text("**This Command Was Made For Group Not Private.**")
+    admin_user = await is_admin(message.chat.id , message.from_user.id)
+    if not admin_user:
+    	return await message.reply_text("**You Aren't An Admin.**")
+    can_user = await can_promote(message.chat.id , message.from_user.id)
+    if not can_user:
+    	return await message.reply_text("**You don't have permission to get invite user.**")
+    can_bot = await can_promote(message.chat.id ,"Itachi_UchihaXBot")
+    if not can_bot:
+    	return await message.reply_text(f"**{BOT_NAME} has no permission to invite user.**")
+    if message.chat.username:
         await message.reply_text(f"https://t.me/{message.chat.username}")  
 
     elif message.chat.type in [enums.ChatType.SUPERGROUP,enums.ChatType.CHANNEL] :
