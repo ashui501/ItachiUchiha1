@@ -5,6 +5,9 @@ import sys
 import asyncio
 from Itachi.config import *
 from pyrogram import Client
+from telethon.sessions import MemorySession
+from telethon import TelegramClient
+from Itachi.utils.quoteapi import Quotly
 from rich.table import Table
 from rich.console import Console 
 from aiohttp import ClientSession
@@ -71,7 +74,7 @@ ALPHA = Client (
       api_hash=API_HASH,
       bot_token=BOT_TOKEN
 )
-
+telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
 async def init():
     LOG.print("Itachi Uchiha Bot Starting....")    
     await app.start()
