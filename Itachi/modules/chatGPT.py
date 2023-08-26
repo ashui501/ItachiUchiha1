@@ -13,3 +13,17 @@ async def gpt(_,message):
         return await rep.edit_text(resp.json())
     else:
         return await rep.edit_text("**Currently API is Down!**")
+
+
+__help__ = """
+**ChatGPT openai model**
+
+**Commands**
+
+♠ `/ask <query>` - retrieves text from chatgpt.
+
+"""
+__mod_name__ = "chatGPT"
+    
+
+  
