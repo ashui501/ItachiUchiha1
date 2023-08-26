@@ -1,4 +1,5 @@
 import time , os
+from Itachi.modules.pyro.permissions import *
 from Itachi import app,BOT_ID,BOT_NAME as MENTION_BOT , BOT_NAME
 from Itachi.config import SUPER_USERS as CHAD
 from pyrogram import filters, enums , Client
