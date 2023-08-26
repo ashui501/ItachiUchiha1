@@ -459,7 +459,7 @@ async def _unmute(_, message):
 
 @Client.on_message(filters.command("users"))
 async def _list(_, message):
-	group = await is_group(message.chat.type)
+    group = await is_group(message.chat.type)
     if not group:
     	return await message.reply_text("**This Command Was Made For Group Not Private.**")
     admin_user = await is_admin(message.chat.id , message.from_user.id)
