@@ -12,7 +12,7 @@ from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardBu
 from .pyro.decorators import control_user
                        
 STATS_MSG="""
-────「 Miku Nakano 遠ゲ 」────
+────「 Itachi Uchiha 」────
 
 • Uptime : {}
 • Users : {}
