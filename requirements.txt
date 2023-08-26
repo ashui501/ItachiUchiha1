@@ -6,6 +6,7 @@ httpcore[http2]
 aiohttp
 async-timeout
 python-Levenshtein
+telethon
 openai
 rich
 asyncio
