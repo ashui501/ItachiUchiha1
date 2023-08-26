@@ -15,6 +15,7 @@ from Python_ARQ import ARQ
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 
 
+quotly = Quotly()
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
