@@ -1,6 +1,7 @@
 import os
 import time
 from Itachi import telethn
+from telethon import events
 from datetime import datetime as dt
 from random import choice
 from shutil import rmtree
