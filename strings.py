@@ -37,6 +37,10 @@ START_BUTTONS = [
        InlineKeyboardButton("System Stats 🖥",callback_data="Friday_st")
     ],
     [
+        InlineKeyboardButton(text="Music 🎶", callback_data="music_help"),
+        InlineKeyboardButton(text="Ai 🤖", callback_data="ai_help")
+    ], 
+    [
         InlineKeyboardButton(
             text="➕ Add Me To Your Groups ➕",
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
