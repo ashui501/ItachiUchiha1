@@ -39,14 +39,4 @@ async def _lewd(_, message):
         await message.reply_photo(pic)
 
 
-__help__ = """
-**Random Anime Cosplay**
 
-**Commands**
-
-♠ `/cosplay` : random sfw anime cosplay.
-♠ `/ncosplay` : random nsfw anime cosplay.
-
-"""
-
-__mod_name__ = "Cosplay"
