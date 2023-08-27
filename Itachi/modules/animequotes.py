@@ -144,13 +144,4 @@ async def anime_quote(_,CallbackQuery):
         ],
         ]))   
 
-__help__="""
-**Get Amazing Anime Quotes**
 
-**Commands**
-
-♠ `/quote` : get random text quotes
-♠ `/animequotes` : get random picture quotes
-
-"""
-__mod_name__ = "Quotes"
