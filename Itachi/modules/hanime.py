@@ -64,15 +64,6 @@ async def hclose(_, cq):
     except:
         pass
 
-__help__ = """
-**Get HAnime Content**
 
-**Commands**
-
-♠ `/hanime` - retrieves info from otakatsu.
-
-"""
-__mod_name__ = "HAnime"
-    
 
   
