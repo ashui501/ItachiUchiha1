@@ -88,12 +88,3 @@ async def quott_(event):
     await msg.delete()
     return message
 
-__help__ = """
-**Quotly Api Hosted.**
-
-**Commands**
-
-♠ `/q` : generate quote from message.
-
-"""
-__mod_name__ = "Quotly"
