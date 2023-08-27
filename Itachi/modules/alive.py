@@ -9,6 +9,15 @@ from Itachi.__main__ import ITACHI_PIC
 from Itachi.config import SUPPORT_CHAT, UPDATES_CHANNEL, OWNER_ID
 from Itachi.modules.pyro.decorators import control_user, command
 
+__help__ = """
+**Here is The Help For Admins**
+
+**Commands**
+
+♠   `/alive` - check the bot is alive or not.
+
+"""
+__mod_name__ = "Alive"
 
 ALIVE_TEXT = """**Hey I Am {}
  ━━━━━━━━━━━━━━━━━━━
