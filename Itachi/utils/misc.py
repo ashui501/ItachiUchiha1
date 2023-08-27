@@ -44,15 +44,24 @@ def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
             ]
         )
 
-    pairs = [modules[i * 3 : (i + 1) * 3] for i in range((len(modules) + 3 - 1) // 3)]
-
-    round_num = len(modules) / 3
-    calc = len(modules) - round(round_num)
-    if calc in [1, 2]:
+    pairs = list(zip(modules[::3], modules[1::3], modules[2::3]))
+    i = 0
+    for m in pairs:
+        for _ in m:
+            i += 1
+    if len(modules) - i == 1:
         pairs.append((modules[-1],))
+    elif len(modules) - i == 2:
+        pairs.append(
+            (
+                modules[-2],
+                modules[-1],
+            )
+        )
 
-    max_num_pages = ceil(len(pairs) / 4)
-    
+    COLUMN_SIZE = 6
+
+    max_num_pages = ceil(len(pairs) / COLUMN_SIZE)
     modulo_page = page_n % max_num_pages
 
 
