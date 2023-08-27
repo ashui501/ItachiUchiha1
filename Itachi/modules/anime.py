@@ -342,21 +342,6 @@ async def _airing(_, message):
 
 
 
-__help__ = """
-**Get Information about anime , characters, manga from Anilist.**
-
-**Commands**
-
-♠ `/anime <anime>`: Returns Information about the anime from Anilist.
-
-♠ `/manga <manga>`: Returns Information about the manga from Anilist.
-
-♠ `/character <character>`: Returns Information about the character from Anilist.
-
-♠ `/airing <anime>`: Returns Information about airing from Anilist.
-
-"""
-__mod_name__ = "Anime"
 
 
 
