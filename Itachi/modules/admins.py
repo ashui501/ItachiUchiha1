@@ -18,6 +18,22 @@ from Itachi.modules.pyro.decorators import control_user,command
 COMMANDERS = [ChatMemberStatus.ADMINISTRATOR,ChatMemberStatus.OWNER]
 
 
+__help__ = """
+**Here is The Help For Admins**
+
+**Commands**
+♠   `/promote <user>` - Promote an user.
+♠   `/fullpromote <user>` - Promote an user with full rights.
+♠   `/demote <user>` - Demote an user.
+♠   `/setgtitle <title>` - Set the group title.
+♠   `/setgpic <reply to image>` - Set the group pfp.
+♠   `/delgpic <reply to image>` - Remove the group pfp.
+♠   `/setgdesc <text>` - Set the group description.
+♠   `/adminlist` - List of admins in the chat.
+♠   `/bots` - List of bots in the chat.
+♠   `/invitelink` - Get invite link of groups.
+"""
+__mod_name__ = "Admins"
 
 
 DEMOTE = ChatPrivileges(
