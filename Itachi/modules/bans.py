@@ -488,22 +488,3 @@ async def _list(_, message):
     os.remove("userslist.txt")      
 
 
-__help__ = """
-**Restrictions Commands For Admins.**
-
-**Commands**
-
-♠ `/kickme` : kick's out the user who uses this command
-♠ `/ban` : ban's users.
-♠ `/sban <username>` : silently ban's users.
-♠ `/tban <username> (m/h/d)` : ban's user with time example 1m , 1h , 1d.
-♠ `/listbans` : list of banned users in a chat.
-♠ `/unban <username>` :  unban's an user
-♠ `/punch <username>` :  punches an user out of the group
-♠ `/mute` : mute users.
-♠ `/tmute <username> (m/h/d)` : mute user with time example 1m , 1h , 1d.
-♠ `/unmute <username>` : unmute users.
-
-"""
-__mod_name__ = "Bans"
-
