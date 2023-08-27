@@ -109,16 +109,4 @@ async def backup(_, message):
 
 
 
-__mod_name__ = "Devs"
 
-__help__ = """
-**These Are Developer Commands None Of Your Business.**
-
-**Commands**
-
-♠ `/leave` : leave any chat through id.
-♠ `/restart` : restart bot's instance.
-♠ `/gitpull` : upgrade source code.
-♠ `/backup` : get backup repository of this bot.
-
-"""
