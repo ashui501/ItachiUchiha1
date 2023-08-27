@@ -29,28 +29,25 @@ loop = asyncio.get_event_loop()
 
 ITACHI_PIC = ["https://telegra.ph/file/f546e6681709b03255f00.jpg", "https://telegra.ph/file/fa1aab224fb2cbc08f47b.jpg", "https://telegra.ph/file/8b78e64eda3f0af73e186.jpg", "https://telegra.ph/file/1355fde2a2c876810ad02.jpg", "https://telegra.ph/file/607c2911f1dc48d40a4e9.jpg", "https://telegra.ph/file/14043c792ee8e71c4eeb6.jpg"]
 uptime = get_readable_time((time.time() - StartTime))
-IMPORTED = {}
-HELPABLE = {}
-MODULES = {}
+
 async def main():
     global IMPORTED, HELPABLE, MODULES
-    for module_name in ALL_MODULES:
-        imported_module = importlib.import_module("Itachi.modules." + module_name)
-        try:
-            MODULES[unidecode(imported_module.__mod_name__).lower()] = imported_module.__help__
-        except Exception as e:
-            print(e)
-        if hasattr(imported_module, "__help__") and imported_module.__help__:
-            HELPABLE[imported_module.__mod_name__.lower()] = imported_module
-        if hasattr(imported_module, "get_help") and imported_module.get_help:
-            HELPABLE[imported_module.__mod_name__.lower()] = imported_module
-
-    LOG.print(strings.LOG_MSG)
-    await asyncio.sleep(2)
-    LOG.print("Access Modules:- ".format(len(ALL_MODULES)) + "\n")
-    for all_module in ALL_MODULES:
-        LOG.print(f"Successfully Imported {all_module}.py")
-
+    for module in ALL_MODULES:
+        imported_module = importlib.import_module(f"Itachi.modules.{module}")
+        if hasattr(imported_module, "__mod_name__") and imported_module.__mod_name__:
+            imported_module.__mod_name__ = imported_module.__mod_name__
+            if hasattr(imported_module, "__help__") and imported_module.__help__:
+                HELPABLE[imported_module.__mod_name__.lower()] = imported_module
+    bot_modules = ""
+    j = 1
+    for i in ALL_MODULES:
+        if j == 4:
+            bot_modules += "| {:<15}|\n".format(i)
+            j = 0
+        else:
+            bot_modules += "| {:<15}".format(i)
+        j += 1
+    LOG.print(f"Loaded Modules :-\n{bot_modules}")
     print()
     LOG.print(f"{BOT_NAME} Started. ")
     try:
