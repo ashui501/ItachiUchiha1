@@ -11,6 +11,21 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 from pyrogram.enums import ParseMode 
 from Itachi.utils.anime_bot import rand_key, search_filler,parse_filler
 
+__help__ = """
+**Get Information about anime , characters, manga from Anilist.**
+
+**Commands**
+
+♠ `/anime <anime>`: Returns Information about the anime from Anilist.
+
+♠ `/manga <manga>`: Returns Information about the manga from Anilist.
+
+♠ `/character <character>`: Returns Information about the character from Anilist.
+
+♠ `/airing <anime>`: Returns Information about airing from Anilist.
+
+"""
+__mod_name__ = "Anime"
 
 url = 'https://graphql.anilist.co'
 FILLERS = {}
