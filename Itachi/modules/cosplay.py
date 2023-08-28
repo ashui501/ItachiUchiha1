@@ -5,6 +5,19 @@ from pyrogram.enums import ChatType
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from Itachi.modules.pyro.chat_actions import send_action
 
+__help__ = """
+**Random Anime Cosplay**
+
+**Commands**
+
+♠ `/cosplay` : random sfw anime cosplay.
+♠ `/ncosplay` : random nsfw anime cosplay.
+
+"""
+
+__mod_name__ = "Cosplay"
+
+
 BUTTONS = [
     [
         InlineKeyboardButton(
