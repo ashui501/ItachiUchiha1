@@ -1,10 +1,12 @@
 from Itachi import app
+from Itachi.modules.pyro.decorators import control_user
 import random
 from pyrogram import filters , Client
 
 ITACHI_PIC = "https://telegra.ph/file/64eab10c10b0242004b86.jpg"
 
 @Client.on_message(filters.command("id"))
+@control_user()
 async def _id(client, message):
     chat = message.chat
     your_id = message.from_user.id
