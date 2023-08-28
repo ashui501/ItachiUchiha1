@@ -5,6 +5,18 @@ from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardButton, CallbackQuery, InlineKeyboardMarkup 
 from Itachi.modules.pyro.decorators import control_user,command
 
+
+__help__="""
+**Get Amazing Anime Quotes**
+
+**Commands**
+
+♠ `/quote` : get random text quotes
+♠ `/animequotes` : get random picture quotes
+
+"""
+__mod_name__ = "Quotes"
+
 QUOTES_IMG = (
       "https://i.imgur.com/Iub4RYj.jpg", 
       "https://i.imgur.com/uvNMdIl.jpg", 
