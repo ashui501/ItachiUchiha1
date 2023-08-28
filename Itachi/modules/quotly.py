@@ -8,6 +8,16 @@ from shutil import rmtree
 from Itachi import quotly
 from Itachi.utils.quotehelper import eor
 
+__help__ = """
+**Quotly Api Hosted.**
+
+**Commands**
+
+♠ `/q` : generate quote from message.
+
+"""
+__mod_name__ = "Quotly"
+
 def register(**args):
     """ Registers a new message. """
     pattern = args.get("pattern", None)
