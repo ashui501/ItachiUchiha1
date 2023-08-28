@@ -1,7 +1,8 @@
 from Itachi import app
-from Itachi.__main__ import ITACHI_PIC
 import random
 from pyrogram import filters , Client
+
+ITACHI_PIC = "https://telegra.ph/file/64eab10c10b0242004b86.jpg"
 
 @Client.on_message(filters.command("id"))
 async def _id(client, message):
@@ -45,6 +46,6 @@ async def _id(client, message):
         text += f"**• Chat ID :** `{reply.sender_chat.id}`"
         
     await message.reply_photo(
-       photo = random.choice(ITACHI_PIC),
+       photo = ITACHI_PIC,
        caption=text)
       
