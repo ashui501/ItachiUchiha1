@@ -7,7 +7,7 @@ ITACHI_PIC = "https://telegra.ph/file/64eab10c10b0242004b86.jpg"
 
 @Client.on_message(filters.command("id") & filters.group)
 @control_user()
-async def _id(client, message):
+async def _iSd(client, message):
     chat = message.chat
     your_id = message.from_user.id
     mention_user = message.from_user.mention
