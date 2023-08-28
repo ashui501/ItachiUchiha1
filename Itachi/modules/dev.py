@@ -12,6 +12,20 @@ from Itachi.utils.pastebin import paste
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
+__mod_name__ = "Devs"
+
+__help__ = """
+**These Are Developer Commands None Of Your Business.**
+
+**Commands**
+
+♠ `/leave` : leave any chat through id.
+♠ `/restart` : restart bot's instance.
+♠ `/gitpull` : upgrade source code.
+♠ `/backup` : get backup repository of this bot.
+
+"""
+
 @Client.on_message(filters.command(["leave","dleave"]) & filters.user(DEV_USERS))
 async def _leave(_, message):
     if len(message.command) < 2:
