@@ -3,6 +3,7 @@ import time
 import random
 import psutil
 import strings
+from strings import *
 import platform
 from pyrogram import filters , __version__ as pyro , Client , enums , Client
 from Itachi.modules.mongo.users_db import get_served_users
