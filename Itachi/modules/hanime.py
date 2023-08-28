@@ -8,7 +8,15 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import filters 
 # (name = Your Bots Folder Name)
 from Itachi import app
+__help__ = """
+**Get HAnime Content**
 
+**Commands**
+
+♠ `/hanime` - retrieves info from otakatsu.
+
+"""
+__mod_name__ = "HAnime"
 
 #SHORTEN THE DISCRIPTION
 def shorten(description):
