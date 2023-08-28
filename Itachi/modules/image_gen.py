@@ -12,8 +12,7 @@ async def gen_img(client , message):
     async with httpx.AsyncClient(timeout=30) as cli:
     	try:
     	    response = await cli.post(f"{url}/text2img" , json=data)
-            result = response.json()
-            pic = result.get("output_url")[0]
+            pic = response.json().get("output_url")[0]
             await client.send_photo(message.chat.id , photo=pic , caption=f"**{message.from_user.mention} Here Is Your Image.\nPrompt :** `{prompt}`")
             await temp.delete()
         except Exception as e:
