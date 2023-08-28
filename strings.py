@@ -37,7 +37,7 @@ START_BUTTONS = [
        InlineKeyboardButton("System Stats 🖥",callback_data="Friday_st")
     ],
     [
-        InlineKeyboardButton(text="Music 🎶", callback_data="music_help"),
+        InlineKeyboardButton(text="Music 🎶", callback_data="music_p"),
         InlineKeyboardButton(text="Ai 🤖", callback_data="ai_help")
     ], 
     [
@@ -57,3 +57,13 @@ GRP_START = [
     ],
 ]
 BACK_BTN = [[InlineKeyboardButton("🔙",callback_data="friday_back")]]
+MUSIC_BTN = [
+    [
+        InlineKeyboardButton(text="Admin Commands 🐥", callback_data="admin_music"),
+        InlineKeyboardButton(text="Play Commands 🍼", callback_data="play_music")
+    ], 
+    [
+       InlineKeyboardButton("Back 🔙",callback_data="friday_back")
+    ],
+]
+MUSIC_BACK =  [[InlineKeyboardButton("🔙",callback_data="m_back")]]
