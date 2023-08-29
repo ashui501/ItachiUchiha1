@@ -1,60 +1,109 @@
-"""
-STATUS: Code is working. ✅
-"""
+import time 
+import asyncio
+from random import choice
+from Itachi import app,get_readable_time
+from pyrogram import filters, enums , Client
+from Itachi.modules.pyro.permissions import *
+from pyrogram.errors import FloodWait 
 
-"""
-GNU General Public License v3.0
+SPAM_CHATS = []
+emoji_unicode_list = [
+"\U0001F600", "\U0001F603", "\U0001F604", "\U0001F601", "\U0001F606",
+"\U0001F605", "\U0001F923", "\U0001F602", "\U0001F642", "\U0001F643",
+"\U0001FAE0", "\U0001F609", "\U0001F60A", "\U0001F607", "\U0001F970",
+"\U0001F60D", "\U0001F929", "\U0001F618", "\U0001F617",
+"\U0001F61A", "\U0001F619", "\U0001F972", "\U0001F60B", "\U0001F61B",
+"\U0001F61C", "\U0001F92A"
+]
 
-Copyright (C) 2022, SOME-1HING [https://github.com/SOME-1HING]
+@Client.on_message(filters.command(["tagall", "all"]) | filters.command("@all", "") & filters.group)
+async def tag_all_users(_,message): 
+    replied = message.reply_to_message  
+    group = await is_group(message.chat.type)
+    if not group:
+    	return await message.reply_text("**This Command Was Made For Group Not Private.**")
+    admin_user = await is_admin(message.chat.id , message.from_user.id)
+    if not admin_user:
+    	return await message.reply_text("**You Aren't An Admin.**")
+    if len(message.command) < 2 and not replied:
+        await message.reply_text("**Reply To Message.**") 
+        return                  
+    if replied:
+        SPAM_CHATS.append(message.chat.id)
+        start = time.time()        
+        usernum= 0
+        usertxt = ""
+        async for m in app.get_chat_members(message.chat.id): 
+            if message.chat.id not in SPAM_CHATS:
+                break       
+            usernum += 1
+            alpha = choice(emoji_unicode_list)
+            usertxt += f"[{alpha}](tg://user?id={m.user.id})"
+            if usernum == 5:
+                await replied.reply_text(usertxt)
+                await asyncio.sleep(2)
+                usernum = 0
+                usertxt = ""
+        end = get_readable_time((time.time() - start))
+        await message.reply_text(f"**Mention Completed In** `{end}`")
+        try :
+            SPAM_CHATS.remove(message.chat.id)
+        except Exception:
+            pass
+    else:
+        text = message.text.split(None, 1)[1]
+        
+        SPAM_CHATS.append(message.chat.id)
+        start = time.time()
+        usernum= 0
+        usertxt = ""
+        async for m in app.get_chat_members(message.chat.id):       
+            if message.chat.id not in SPAM_CHATS:
+                break 
+            usernum += 1
+            alpha = choice(emoji_unicode_list)
+            usertxt += f"[{alpha}](tg://user?id={m.user.id})"
+            if usernum == 5:
+                await app.send_message(message.chat.id,f'{text}\n{usertxt}')
+                await asyncio.sleep(2)
+                usernum = 0
+                usertxt = ""            
+        end = get_readable_time((time.time() - start))
+        await message.reply_text(f"**Mention Completed In** `{end}`")                
+        try :
+            SPAM_CHATS.remove(message.chat.id)
+        except Exception:
+            pass        
+           
 
-Credits:-
-    I don't know who originally wrote this code. If you originally wrote this code, please reach out to me. 
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-"""
-
-from Shikimori import telethn
-from Shikimori.events import register
-
-
-@register(pattern="^(/all|/mentionall|/tagall|/utag|@all|@mentionall|@tagall|@utag) ?(.*)")
-async def _(event):
-    if not event.is_group:
-        return
-    if event.fwd_from:
-        return
-    mentions = "Tagged by an admin"
-    chat = await event.get_input_chat()
-    async for x in telethn.iter_participants(chat, 99999999):
-        mentions += f" \n [{x.first_name}](tg://user?id={x.id})"
-    if event.reply_to_msg_id:
-        try:
-            await event.send_message(event.chat_id, mentions, reply_to=event.reply_to_msg_id)
-        except:
-            await event.reply(mentions)
-    await event.reply(mentions)
-
-__mod_name__ = "TagAll"
+@Client.on_message(filters.command("cancel") & filters.group)
+async def cancelcmd(_, message):
+	group = await is_group(message.chat.type)
+    if not group:
+    	return await message.reply_text("**This Command Was Made For Group Not Private.**")
+    admin_user = await is_admin(message.chat.id , message.from_user.id)
+    if not admin_user:
+    	return await message.reply_text("**You Aren't An Admin.**")
+    chat_id = message.chat.id
+    if chat_id in SPAM_CHATS:
+        try :
+            SPAM_CHATS.remove(chat_id)
+        except Exception:
+            pass   
+        return await message.reply_text("**Mention Cancelled.**")     
+                                     
+    else :
+        await message.reply_text("**Mention Not Started.**")  
+        return       
+    
 __help__ = """
-*Tag All*
- ❍ `/users` : Get txt file of all users in your group.
- ❍ `/all` : (reply to message or add another message) To mention all members in your group, without exception.
- ❍ `/tagall` : (reply to message or add another message) To mention all members in your group, without exception.
- ❍ `/utag` : (reply to message or add another message) To mention all members in your group, without exception.
- ❍ `/mentionall` : (reply to message or add another message) To mention all members in your group, without exception.
- ❍ `@all` : (reply to message or add another message) To mention all members in your group, without exception.
- ❍ `@tagall` : (reply to message or add another message) To mention all members in your group, without exception.
- ❍ `@utag` : (reply to message or add another message) To mention all members in your group, without exception.
- ❍ `@mentionall` : (reply to message or add another message) To mention all members in your group, without exception.
+**Tag Everyone In Chats.**
+
+**Command**
+
+♠ `/tagall` : mention everyone by tagging them.
+♠ `/cancel` : cancel current mention process.
 """
+__mod_name__ = "Tag-All"
+    
