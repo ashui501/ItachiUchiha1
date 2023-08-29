@@ -71,6 +71,14 @@ app = Client (
       bot_token=BOT_TOKEN,
       plugins=dict(root="Itachi/modules")
       )
+pbot = Client (
+      "ITACHIDBDB",
+      api_id=API_ID,
+      api_hash=API_HASH,
+      bot_token=BOT_TOKEN,
+      plugins=dict(root="Itachi/plugins")
+      )
+
 ALPHA = Client (
       "ItachiXX",
       api_id=API_ID,
