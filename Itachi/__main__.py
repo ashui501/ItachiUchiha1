@@ -56,7 +56,7 @@ async def main():
                              caption=strings.SUPPORT_SEND_MSG.format(platform.python_version(), pyrover, uptime)
                              )
         await ALPHA.send_message(config.OWNER_ID , "Started")
-        await pbot.send_message(config.OWNER_ID , "Ok")
+      #  await pbot.send_message(config.OWNER_ID , "Ok")
     except Exception as e:
         LOG.print(f"{e}")
         LOG.print(f"Bot isn't able to send message to @{config.SUPPORT_CHAT} !")
