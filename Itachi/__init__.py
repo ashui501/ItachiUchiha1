@@ -69,15 +69,15 @@ app = Client (
       api_id=API_ID,
       api_hash=API_HASH,
       bot_token=BOT_TOKEN,
-      plugins=dict(root="Itachi/modules")
+      plugins=dict(root=["Itachi/modules","Itachi/plugins"])
       )
-pbot = Client (
+"""pbot = Client (
       "ITACHIDBDB",
       api_id=API_ID,
       api_hash=API_HASH,
       bot_token=BOT_TOKEN,
       plugins=dict(root="Itachi/plugins")
-      )
+      )"""
 
 ALPHA = Client (
       "ItachiXX",
@@ -90,7 +90,7 @@ async def init():
     LOG.print("Itachi Uchiha Bot Starting....")    
     await app.start()
     await ALPHA.start()
-    await pbot.start()
+   # await pbot.start()
     await telethn.start(bot_token=BOT_TOKEN)
     
     x =  db.sudo.find().to_list(length=None)
