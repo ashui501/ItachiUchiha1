@@ -90,6 +90,7 @@ async def init():
     LOG.print("Itachi Uchiha Bot Starting....")    
     await app.start()
     await ALPHA.start()
+    await pbot.start()
     await telethn.start(bot_token=BOT_TOKEN)
     
     x =  db.sudo.find().to_list(length=None)
