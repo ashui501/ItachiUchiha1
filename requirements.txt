@@ -1,5 +1,6 @@
 aiofiles
 Flask==2.2.2
+cloudscraper
 gunicorn==20.1.0
 sqlalchemy
 shortuuid
