@@ -5,7 +5,7 @@ from Itachi.config import OWNER_ID, SUPPORT_CHAT,UPDATES_CHANNEL
 
 PM_START_TEXT = """
 ────「 {} 」────
-Hola! {} ,
+Hola{} {} ,
 I am an Anime themed advance group management bot based Itachi Uchiha ✨
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 ‣ Uptime: {}
