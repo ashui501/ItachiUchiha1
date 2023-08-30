@@ -77,6 +77,15 @@ Click on the buttons below for more information. If you're facing any problem in
 
 All commands can be used with: /"""
 
+ai_help_lol = """
+**Artificial Intelligence Programs**
+
+♠ `/ask` : powerful gpt4 fastest response rate.
+♠ `/draw` : create artificial pictures.
+♠ `/upscale` : increase quality of any picture.
+♠ `/llama` : powerful Facebook meta ai text
+"""
+
 
 @Client.on_callback_query(filters.regex("friday_back"))
 @control_user()
@@ -88,7 +97,7 @@ async def Friday(_, callback_query : CallbackQuery):
     reply_markup=InlineKeyboardMarkup(strings.START_BUTTONS))
 
 
-@Client.on_callback_query(filters.regex(r"^(admin_music|play_music|music_p|m_back)$"))
+@Client.on_callback_query(filters.regex(r"^(admin_music|play_music|music_p|m_back|ai_help)$"))
 @control_user()
 async def musics(client , callback_query : CallbackQuery):
     data = callback_query.data
@@ -101,6 +110,8 @@ async def musics(client , callback_query : CallbackQuery):
         return await query.edit_caption(music , reply_markup=InlineKeyboardMarkup(MUSIC_BTN))
     elif data == "m_back":
         return await query.edit_caption(music , reply_markup=InlineKeyboardMarkup(MUSIC_BTN))
+    elif data == "ai_help":
+        return await query.edit_caption(ai_help_lol , reply_markup=InlineKeyboardMarkup(BACK_BTN))
     else:
         return 
 
