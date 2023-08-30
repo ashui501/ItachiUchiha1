@@ -5,8 +5,8 @@ from pyrogram import __version__ as pver
 from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from Itachi import BOT_NAME, BOT_USERNAME, app
-from Itachi.__main__ import ITACHI_PIC
 from Itachi.config import SUPPORT_CHAT, UPDATES_CHANNEL, OWNER_ID
+from Itachi.__main__ import ITACHI_PIC
 from Itachi.modules.pyro.decorators import control_user, command
 
 __help__ = """
@@ -40,7 +40,7 @@ btn = [
     ],
     [
         InlineKeyboardButton(
-            text="➕ Add Me To Your Group ➕",
+            text="☯️ Add Me To Your Group ☯️",
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
         ),
     ],
