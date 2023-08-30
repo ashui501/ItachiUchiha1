@@ -93,7 +93,7 @@ async def Friday(_, callback_query : CallbackQuery):
     query= callback_query.message
     mention=callback_query.from_user.mention
     uptime= get_readable_time((time.time() - StartTime))
-    await query.edit_message_text(strings.PM_START_TEXT.format(BOT_NAME,mention,uptime,platform.python_version(),pyro),
+    await query.edit_text(strings.PM_START_TEXT.format(BOT_NAME,mention,uptime,platform.python_version(),pyro),
     reply_markup=InlineKeyboardMarkup(strings.START_BUTTONS))
 
 
@@ -103,15 +103,15 @@ async def musics(client , callback_query : CallbackQuery):
     data = callback_query.data
     query = callback_query.message
     if data == "admin_music":
-        return await query.edit_message_text(ADMIN_M , reply_markup=InlineKeyboardMarkup(MUSIC_BACK))
+        return await query.edit_text(ADMIN_M , reply_markup=InlineKeyboardMarkup(MUSIC_BACK))
     elif data == "play_music":
-        return await query.edit_message_text(PLAY_M , reply_markup=InlineKeyboardMarkup(MUSIC_BACK))
+        return await query.edit_text(PLAY_M , reply_markup=InlineKeyboardMarkup(MUSIC_BACK))
     elif data == "music_p":
-        return await query.edit_message_text(music , reply_markup=InlineKeyboardMarkup(MUSIC_BTN))
+        return await query.edit_text(music , reply_markup=InlineKeyboardMarkup(MUSIC_BTN))
     elif data == "m_back":
-        return await query.edit_message_text(music , reply_markup=InlineKeyboardMarkup(MUSIC_BTN))
+        return await query.edit_text(music , reply_markup=InlineKeyboardMarkup(MUSIC_BTN))
     elif data == "ai_help":
-        return await query.edit_message_text(ai_help_lol , reply_markup=InlineKeyboardMarkup(BACK_BTN))
+        return await query.edit_text(ai_help_lol , reply_markup=InlineKeyboardMarkup(BACK_BTN))
     else:
         return 
 
