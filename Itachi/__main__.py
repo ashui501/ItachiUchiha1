@@ -135,7 +135,7 @@ async def help_button(_,query):
                 )
                 + HELPABLE[module].__help__
             )
-            await query.edit_text(
+            await query.message.edit_text(
                 text,
                 parse_mode=ParseMode.MARKDOWN,                
                 reply_markup=InlineKeyboardMarkup(
@@ -145,7 +145,7 @@ async def help_button(_,query):
 
         elif prev_match:
             curr_page = int(prev_match.group(1))
-            await query.edit_text(
+            await query.message.edit_text(
                 strings.HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(paginate_modules(curr_page - 1, HELPABLE, "help")
@@ -154,7 +154,7 @@ async def help_button(_,query):
                                    
         elif next_match:
             next_page = int(next_match.group(1))
-            await query.edit_text(
+            await query.message.edit_text(
                 strings.HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
@@ -163,7 +163,7 @@ async def help_button(_,query):
             )                   
 
         elif back_match:
-           await query.edit_text(
+           await query.message.edit_text(
                 strings.HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
