@@ -6,16 +6,17 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from Itachi.modules.pyro.chat_actions import send_action
 
 __help__ = """
-**Random Anime Cosplay**
+**Random Man Of Culture Content**
 
 **Commands**
 
 ♠ `/cosplay` : random sfw anime cosplay.
 ♠ `/ncosplay` : random nsfw anime cosplay.
+♠ `/nude` - fetch NSFW from night api.
 
 """
 
-__mod_name__ = "Cosplay"
+__mod_name__ = "Hentai 🔞"
 
 
 BUTTONS = [
