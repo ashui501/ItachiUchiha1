@@ -67,10 +67,9 @@ async def main():
 async def send_help(app,chat, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))    
-    await app.send_photo(
+    await app.send_message(
         chat_id=chat,
-        photo=random.choice(ITACHI_PIC),
-        caption=text,
+        text,
         parse_mode=ParseMode.MARKDOWN,      
         reply_markup=keyboard,
     )
@@ -92,10 +91,9 @@ async def group_start(_, message):
                 mod = mod.replace("_", " ")
 #                 excpet :
 #                     mod = mod
-                await _.send_photo(
+                await _.send_message(
                     chat_id,
-                    photo = random.choice(ITACHI_PIC),
-                    caption = f"{strings.HELP_STRINGS}\n{MODULES[mod]}",
+                    f"{strings.HELP_STRINGS}\n{MODULES[mod]}",
                     reply_markup = InlineKeyboardMarkup(
                         [[InlineKeyboardButton(text="«", callback_data="help_back")]]
                     ),
@@ -108,7 +106,7 @@ async def group_start(_, message):
             mention = message.from_user.mention                       
             await app.send_message(
            chat_id,    
-           strings.PM_START_TEXT.format(BOT_NAME,[!](random.choice(ITACHI_PIC)),mention,uptime,platform.python_version(),pyrover),
+           strings.PM_START_TEXT.format(BOT_NAME,mention,uptime,platform.python_version(),pyrover),
            reply_markup=InlineKeyboardMarkup(strings.START_BUTTONS)
            )
                         
@@ -137,7 +135,7 @@ async def help_button(_,query):
                 )
                 + HELPABLE[module].__help__
             )
-            await query.message.edit_caption(
+            await query.edit_message_text(
                 text,
                 parse_mode=ParseMode.MARKDOWN,                
                 reply_markup=InlineKeyboardMarkup(
@@ -147,7 +145,7 @@ async def help_button(_,query):
 
         elif prev_match:
             curr_page = int(prev_match.group(1))
-            await query.message.edit_caption(
+            await query.edit_message_text(
                 strings.HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(paginate_modules(curr_page - 1, HELPABLE, "help")
@@ -156,7 +154,7 @@ async def help_button(_,query):
                                    
         elif next_match:
             next_page = int(next_match.group(1))
-            await query.message.edit_caption(
+            await query.edit_message_text(
                 strings.HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
@@ -165,7 +163,7 @@ async def help_button(_,query):
             )                   
 
         elif back_match:
-           await query.message.edit_caption(
+           await query.edit_message_text(
                 strings.HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
