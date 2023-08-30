@@ -30,19 +30,16 @@ Click on below buttons to access commands of {BOT_NAME}.**
 
 START_BUTTONS = [
     [
-        InlineKeyboardButton(text="Commands ⚙️", callback_data="help_back"),
-        InlineKeyboardButton(text="Support ☯️", url=f"t.me/{SUPPORT_CHAT}")
+        InlineKeyboardButton(text="Help 🚨", callback_data="help_back"),
+        InlineKeyboardButton(text="Support 🆘", url=f"t.me/{SUPPORT_CHAT}")
     ], 
-    [
-       InlineKeyboardButton("System Stats 🖥",callback_data="Friday_st")
-    ],
     [
         InlineKeyboardButton(text="Music 🎶", callback_data="music_p"),
         InlineKeyboardButton(text="Ai 🤖", callback_data="ai_help")
     ], 
     [
         InlineKeyboardButton(
-            text="➕ Add Me To Your Groups ➕",
+            text="☯️ Add Itachi To Group ☯️",
             url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
         ),
     ],     
