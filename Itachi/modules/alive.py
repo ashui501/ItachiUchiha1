@@ -6,8 +6,10 @@ from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from Itachi import BOT_NAME, BOT_USERNAME, app
 from Itachi.config import SUPPORT_CHAT, UPDATES_CHANNEL, OWNER_ID
-from Itachi.__main__ import ITACHI_PIC
+#from Itachi.__main__ import ITACHI_PIC
 from Itachi.modules.pyro.decorators import control_user, command
+
+ITACHI_PIC = ["https://telegra.ph/file/f546e6681709b03255f00.jpg", "https://telegra.ph/file/fa1aab224fb2cbc08f47b.jpg", "https://telegra.ph/file/8b78e64eda3f0af73e186.jpg", "https://telegra.ph/file/1355fde2a2c876810ad02.jpg", "https://telegra.ph/file/607c2911f1dc48d40a4e9.jpg", "https://telegra.ph/file/14043c792ee8e71c4eeb6.jpg"]
 
 __help__ = """
 **Here is The Help For Admins**
