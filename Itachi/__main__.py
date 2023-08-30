@@ -69,7 +69,7 @@ async def send_help(app,chat, text, keyboard=None):
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))    
     await app.send_message(
         chat_id=chat,
-        text,
+        text=text,
         parse_mode=ParseMode.MARKDOWN,      
         reply_markup=keyboard,
     )
