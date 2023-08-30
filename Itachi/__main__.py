@@ -106,10 +106,9 @@ async def group_start(_, message):
                 
         else:
             mention = message.from_user.mention                       
-            await app.send_photo(
+            await app.send_message(
            chat_id,    
-           photo=random.choice(ITACHI_PIC),
-           caption=strings.PM_START_TEXT.format(BOT_NAME,mention,uptime,platform.python_version(),pyrover),
+           strings.PM_START_TEXT.format(BOT_NAME,mention,uptime,platform.python_version(),pyrover),
            reply_markup=InlineKeyboardMarkup(strings.START_BUTTONS)
            )
                         
