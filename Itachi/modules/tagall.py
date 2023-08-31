@@ -9,5 +9,5 @@ __help__ = """
 ♠ `/tagall` : mention everyone by tagging them.
 ♠ `/cancel` : cancel current mention process.
 """
-__mod_name__ = "Tag-All"
+__mod_name__ = "Tag-All 🍌"
     
