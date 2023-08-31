@@ -16,7 +16,7 @@ __help__ = """
 ♠ `/q` : generate quote from message.
 
 """
-__mod_name__ = "Quotly"
+__mod_name__ = "Quotly 🧀"
 
 def register(**args):
     """ Registers a new message. """
