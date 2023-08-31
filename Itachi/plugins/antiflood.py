@@ -6,7 +6,9 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from Itachi.modules.mongo.approve_db import approved_users,isApproved
 from pyrogram.types import ChatPermissions
 from Itachi.modules.bans import until_date 
-from Itachi.modules.mongo.antiflood_db import *           
+from Itachi.modules.mongo.antiflood_db import *  
+from Itachi.modules.pyro.permissions import *
+from Itachi.modules.pyro.status import *
 from Itachi.modules.pyro.decorators import control_user,command
 from Itachi.modules.pyro.misc import remove_markdown
 flood_watcher = 69
@@ -45,7 +47,7 @@ async def _setflood(_, message):
 @Client.on_message(filters.command("setfloodmode"))
 @control_user()
 async def _setfloodmode(_, message):   
-	group = await is_group(message.chat.type)
+    group = await is_group(message.chat.type)
     if not group:
     	return await message.reply_text("**This Command Was Made For Group Not Private.**")
     admin_user = await is_admin(message.chat.id , message.from_user.id)
@@ -60,7 +62,7 @@ async def _setfloodmode(_, message):
 @Client.on_message(filters.command("flood"))
 @control_user()
 async def _flood(_, message):
-	group = await is_group(message.chat.type)
+    group = await is_group(message.chat.type)
     if not group:
     	return await message.reply_text("**This Command Was Made For Group Not Private.**")
     admin_user = await is_admin(message.chat.id , message.from_user.id)
