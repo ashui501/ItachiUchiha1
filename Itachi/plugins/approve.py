@@ -3,7 +3,7 @@ from Itachi import app
 from Itachi.config import SUPER_USERS as SUPREME_USERS
 from Itachi.modules.pyro.permissions import *
 from Itachi.modules.pyro.extracting_id import extract_user_id
-from Itachi.modules.tagall import SPAM_CHATS
+from Itachi.plugins.tagall import SPAM_CHATS
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup 
 from Itachi.modules.mongo.approve_db import *
 from Itachi.modules.pyro.decorators import control_user,command
