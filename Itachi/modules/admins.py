@@ -33,7 +33,7 @@ __help__ = """
 ♠   `/bots` - List of bots in the chat.
 ♠   `/invitelink` - Get invite link of groups.
 """
-__mod_name__ = "Admins"
+__mod_name__ = "Admins ☠️"
 
 
 DEMOTE = ChatPrivileges(
