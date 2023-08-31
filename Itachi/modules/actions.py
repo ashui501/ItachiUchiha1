@@ -16,7 +16,7 @@ __help__ = """
 ♠ `/rmaction` - stop receiving chat actions.
 
 """
-__mod_name__ = "Actions"
+__mod_name__ = "Actions 🐥"
 
 
 @Client.on_message(filters.command(["addaction","rmaction"]))
