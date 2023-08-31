@@ -5,7 +5,7 @@ load_dotenv()
 
 API_ID = int(getenv('API_ID','18770647'))
 API_HASH = getenv('API_HASH','ed11b8af8b51418dbac60b456d1429a7')
-BOT_TOKEN = getenv('BOT_TOKEN','5520008350:AAFoHHVAlYnyEkqWzEVnk0r9a3Yy44CV-H8')
+BOT_TOKEN = getenv('BOT_TOKEN','5520008350:AAHCPF2KQaRs2Y2n9OcfuiGEFesd1l15yMw')
 MONGO_DB_URL = getenv('MONGO_DB_URL','mongodb+srv://PRIME:Ricks_2005@cluster0.koprs84.mongodb.net/?retryWrites=true&w=majority')
 SUPPORT_CHAT = getenv('SUPPORT_CHAT','RatatoskSupport')
 UPDATES_CHANNEL = getenv('UPDATES_CHANNEL','MikuNakanoXUpdates')
