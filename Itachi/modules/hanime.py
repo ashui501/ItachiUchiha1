@@ -16,7 +16,7 @@ __help__ = """
 ♠ `/hanime` - retrieves info from otakatsu.
 
 """
-__mod_name__ = "HAnime"
+__mod_name__ = "HAnime 🍼"
 
 #SHORTEN THE DISCRIPTION
 def shorten(description):
