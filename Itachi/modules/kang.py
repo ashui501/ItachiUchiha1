@@ -7,5 +7,5 @@ __help__ = """
 ♠ `/kang` - kang any perticular sticker.
 
 """
-__mod_name__ = "Kang"
+__mod_name__ = "Kang 🦘"
 
