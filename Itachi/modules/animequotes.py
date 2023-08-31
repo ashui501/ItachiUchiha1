@@ -15,7 +15,7 @@ __help__="""
 ♠ `/animequotes` : get random picture quotes
 
 """
-__mod_name__ = "Quotes"
+__mod_name__ = "Quotes ✨"
 
 QUOTES_IMG = (
       "https://i.imgur.com/Iub4RYj.jpg", 
