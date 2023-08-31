@@ -26,7 +26,7 @@ __help__ = """
 ♠ `/unmute <username>` : unmute users.
 
 """
-__mod_name__ = "Bans"
+__mod_name__ = "Bans 🚫"
 
 async def until_date(message : Message, time_val):   
     possible = ["m","h","d","w"]
