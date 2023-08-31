@@ -100,14 +100,11 @@ async def _flood(_, message):
 async def _anticq(_, query):
     chat_id = query.message.chat.id  
     user_id = query.from_user.id  
+    rest = await can_restrict(chat_id , user_id)
+    if not rest:
+    	return await query.answer("You don't have permission to restrict users." , show_alert=True)
     chat_title = query.message.chat.title
     data = query.data    
-    bpermission,btxt = await user_has_permission(chat_title,chat_id,BOT_ID,"can_restrict_members")
-    upermission,utxt = await user_has_permission(chat_title,chat_id,query.from_user.id,"can_restrict_members",bot=False)
-    if not upermission:
-        return await query.answer(await remove_markdown(utxt),show_alert=True)   
-    if not bpermission:
-        return await query.answer(await remove_markdown(btxt),show_alert=True)
     if data == "floodban":
         type = "Ban"
         id = 1
@@ -125,14 +122,11 @@ async def _anticq(_, query):
 async def _anticqm(_, query):
     chat_id = query.message.chat.id  
     user_id = query.from_user.id  
+    rest = await can_restrict(chat_id , user_id)
+    if not rest:
+    	return await query.answer("You don't have permission to restrict users." , show_alert=True)
     data = query.data  
     chat_title = query.message.chat.title
-    bpermission,btxt = await user_has_permission(chat_title,chat_id,BOT_ID,"can_restrict_members")
-    upermission,utxt = await user_has_permission(chat_title,chat_id,query.from_user.id,"can_restrict_members",bot=False)
-    if not upermission:
-        return await query.answer(await remove_markdown(utxt),show_alert=True)   
-    if not bpermission:
-        return await query.answer(await remove_markdown(btxt),show_alert=True) 
     if data == "floodtban":
         mid = 4
     elif data == "floodtmute":
@@ -144,14 +138,12 @@ async def _anticqm(_, query):
 @control_user()
 async def _timecq(_, query):   
     chat_id = query.message.chat.id
+    user_id = query.from_user.id
     data = query.data.split("_")
     chat_title = query.message.chat.title
-    bpermission,btxt = await user_has_permission(chat_title,chat_id,BOT_ID,"can_restrict_members")
-    upermission,utxt = await user_has_permission(chat_title,chat_id,query.from_user.id,"can_restrict_members",bot=False)
-    if not upermission:
-        return await query.answer(await remove_markdown(utxt),show_alert=True)   
-    if not bpermission:
-        return await query.answer(await remove_markdown(btxt),show_alert=True)
+    rest = await can_restrict(chat_id , user_id)
+    if not rest:
+    	return await query.answer("You don't have permission to restrict users." , show_alert=True)
     val = data[1]
     id = int(data[3])
     await set_antiflood_mode(chat_id,id,val)
