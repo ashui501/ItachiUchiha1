@@ -404,12 +404,12 @@ __help__ = """
 **Here is The Help For Afk**
 
 **Commands**
- /afk - This will set you offline.
+♠ /afk - This will set you offline.
 
- /afk [reason] - This will set you offline with a reason.
+♠ /afk [reason] - This will set you offline with a reason.
 
- /afk [reply to sticker/photo] - This will set you offline with a photo or sticker.
+♠ /afk [reply to sticker/photo] - This will set you offline with a photo or sticker.
 
- /afk [reply to sticker/photo] [reason] - This will set you offline with a photo or sticker with a reason.
+♠ /afk [reply to sticker/photo] [reason] - This will set you offline with a photo or sticker with a reason.
 """
-__mod_name__ = "Afk"
+__mod_name__ = "Afk 💤"
