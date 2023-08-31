@@ -8,5 +8,5 @@ __help__ = """
 ♠ `/setfloodmode` - flood mode to ban , mute , kick user.
 
 """
-__mod_name__ = "Anti-Flood"
+__mod_name__ = "Anti-Flood 🧭"
     
