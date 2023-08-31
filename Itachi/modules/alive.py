@@ -19,7 +19,7 @@ __help__ = """
 ♠   `/alive` - check the bot is alive or not.
 
 """
-__mod_name__ = "Alive"
+__mod_name__ = "Alive 👾"
 
 ALIVE_TEXT = """**Hey I Am {}
  ━━━━━━━━━━━━━━━━━━━
