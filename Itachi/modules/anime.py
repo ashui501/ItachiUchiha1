@@ -25,7 +25,7 @@ __help__ = """
 ♠ `/airing <anime>`: Returns Information about airing from Anilist.
 
 """
-__mod_name__ = "Anime"
+__mod_name__ = "Anime ☯️"
 
 url = 'https://graphql.anilist.co'
 FILLERS = {}
