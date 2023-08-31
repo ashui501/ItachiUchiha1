@@ -7,4 +7,4 @@ __help__="""
 ♠ `/stickerid` : fetch sticker id.
 
 """
-__mod_name__ = "Stickers"
+__mod_name__ = "Stickers ☕"
