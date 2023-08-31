@@ -25,7 +25,17 @@ SUPPORT_SEND_MSG = """
 LOG_MSG = "Itachi Uchiha Started ✨"
 
 HELP_STRINGS = f"""**
-Click on below buttons to access commands of {BOT_NAME}.**
+Hey there! My name is Itachi Uchiha.
+
+Main commands available:
+
+• Click on the button bellow to get description about specifics pcommand.
+
+• If You Face Any Problems Please Report It To Our Support Group.
+
+• /help <Module Name>: PM's you info about that module.
+
+• Click on below buttons to access commands of {BOT_NAME}.**
 """
 
 START_BUTTONS = [
