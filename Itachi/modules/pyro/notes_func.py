@@ -5,7 +5,7 @@ import re
 from pyrogram.types import InlineKeyboardMarkup, Message
 from Itachi import app
 from Itachi.modules.mongo.notes_db import GetNote
-from Itachi.modules.msg_types import button_markdown_parser
+from Itachi.modules.pyro.msg_types import button_markdown_parser
 
 
 class NoteTypeMap(Enum):
