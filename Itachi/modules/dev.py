@@ -12,7 +12,7 @@ from Itachi.utils.pastebin import paste
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-__mod_name__ = "Devs"
+__mod_name__ = "Devs 🧠"
 
 __help__ = """
 **These Are Developer Commands None Of Your Business.**
