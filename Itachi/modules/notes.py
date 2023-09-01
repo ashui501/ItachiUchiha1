@@ -9,4 +9,4 @@ __help__ = """
 ♠   `/notes` - check all notes in a group.
 
 """
-__mod_name__ = "Notes 🥀
+__mod_name__ = "Notes 🥀"
