@@ -3,7 +3,7 @@ from Itachi import app, db, BOT_ID , BOT_USERNAME , app as ubot
 from Itachi.config import OWNER_ID, SUPER_USERS as SUPREME_USERS, SUPER_USERS as CHAD, DEV_USERS 
 from pyrogram import filters, enums , Client as v
 from Itachi.modules.pyro.extracting_id import extract_user_id
-from Itachi.modules.mongo.afk_db import is_user_afk
+from Itachi.modules.mongo.afk_db import is_afk as is_user_afk
 from pyrogram.errors import BadRequest
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from Itachi.modules.mongo.users_info_db import *
