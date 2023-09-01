@@ -9,4 +9,4 @@ __help__ = """
 ♠   `/filters` - check all filters in a group.
 
 """
-__mod_name__ = "Filters 💥
+__mod_name__ = "Filters 💥"
