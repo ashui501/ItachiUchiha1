@@ -79,7 +79,7 @@ async def get_file_id_from_message(msg):
     return file_id
 
 
-@app.on_message(filters.command(["pp","grs","reverse","p"]))
+@Client.on_message(filters.command(["pp","grs","reverse","p"]))
 async def _reverse(_,msg):     
       text = await msg.reply("**⇢ wait a sec...**")
       file_id = await get_file_id_from_message(msg)
