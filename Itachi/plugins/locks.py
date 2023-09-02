@@ -37,9 +37,9 @@ async def _locktypes(_, message):
 
 @Client.on_message(filters.command("locks") & filters.group)
 async def _locks(_, message):
-	admin = is_admin(message.chat.id , message.from_user.id)
-	if not admin:
-	    return await message.reply_text("**You aren't an admin.**")
+    admin = is_admin(message.chat.id , message.from_user.id)
+    if not admin:
+        return await message.reply_text("**You aren't an admin.**")
     msg = await message.reply("**checking...**")
     permissions = message.chat.permissions
     msgs = await convert_to_emoji(permissions.can_send_messages)
@@ -70,9 +70,9 @@ async def _locks(_, message):
     
 @Client.on_message(filters.command("lock") & filters.group)
 async def _lock(_, message):
-	admin = is_admin(message.chat.id , message.from_user.id)
-	if not admin:
-	    return await message.reply_text("**You aren't an admin.**")
+    admin = is_admin(message.chat.id , message.from_user.id)
+    if not admin:
+        return await message.reply_text("**You aren't an admin.**")
     if len(message.command) < 2:
         return await message.reply_text("**Usage:** `/lock name`")
     chat_id = message.chat.id
@@ -182,9 +182,9 @@ async def prevent_approved(app,message):
          
 @Client.on_message(filters.command("unlock") & filters.group)
 async def unlock_perm(_, message):
-	admin = is_admin(message.chat.id , message.from_user.id)
-	if not admin:
-	    return await message.reply_text("**You aren't an admin.**")
+    admin = is_admin(message.chat.id , message.from_user.id)
+    if not admin:
+        return await message.reply_text("**You aren't an admin.**")
     if len(message.command) < 2:
         await m.reply_text("**Usage**: `/unlock name`")
         return
