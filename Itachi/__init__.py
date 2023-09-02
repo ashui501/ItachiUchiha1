@@ -98,7 +98,7 @@ async def init():
     await app.start()
     await ALPHA.start()
     await pbot.start()
-    await telethn.start(bot_token="6558357911:AAHXA6mFQrh05bsOL77w56hY-KE9tmej8Lk")
+    await telethn.start(bot_token=BOT_TOKEN)
     x =  db.sudo.find().to_list(length=None)
     for i in await x :
         config.SUDO_USERS.append(i["user_id"])
