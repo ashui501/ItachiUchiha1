@@ -113,11 +113,6 @@ async def init():
     LOG.print(f"Loaded Sudo Users. :- \n\n{msg}") 
     
     LOG.print("Successfully Executed Everything.")
-    try:                                                                    
-        LOG.print("Using long polling.")
-        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
-        updater.idle()    
-    except:
-        LOG.print("Ptb died")
+    
 
 loop.run_until_complete(init()) 
