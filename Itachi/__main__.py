@@ -29,7 +29,7 @@ loop = asyncio.get_event_loop()
 
 ITACHI_PIC = ["https://telegra.ph/file/f546e6681709b03255f00.jpg", "https://telegra.ph/file/fa1aab224fb2cbc08f47b.jpg", "https://telegra.ph/file/8b78e64eda3f0af73e186.jpg", "https://telegra.ph/file/1355fde2a2c876810ad02.jpg", "https://telegra.ph/file/607c2911f1dc48d40a4e9.jpg", "https://telegra.ph/file/14043c792ee8e71c4eeb6.jpg"]
 uptime = get_readable_time((time.time() - StartTime))
-
+WEBHOOK = False
 async def main():
     global IMPORTED, HELPABLE, MODULES
     for module in ALL_MODULES:
@@ -60,6 +60,10 @@ async def main():
     except Exception as e:
         LOG.print(f"{e}")
         LOG.print(f"Bot isn't able to send message to @{config.SUPPORT_CHAT} !")
+    
+    LOG.print("Using long polling.")
+    updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
+    updater.idle()
     await idle()
 
       
