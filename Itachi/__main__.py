@@ -61,10 +61,10 @@ async def main():
         LOG.print(f"{e}")
         LOG.print(f"Bot isn't able to send message to @{config.SUPPORT_CHAT} !")
     
+    await idle()
     LOG.print("Using long polling.")
     updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
     updater.idle()
-    await idle()
 
       
     
