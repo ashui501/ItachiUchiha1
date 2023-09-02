@@ -34,7 +34,7 @@ async def _addchat(app : Client, query : CallbackQuery):
     check_chat = await chatbotdb.find_one({"chat_id" : chat_id})
     if query.message.chat.type != enums.ChatType.PRIVATE:
         
-        xx = await _.get_chat_member(chat_id,user_id)
+        xx = await app.get_chat_member(chat_id,user_id)
         if xx.privileges:    
             if not check_chat:  
                 await addchat_bot(chat_id)           
@@ -63,7 +63,7 @@ async def _rmchat(app : Client, query : CallbackQuery):
     check_chat = await chatbotdb.find_one({"chat_id" : chat_id})
   
     if query.message.chat.type != enums.ChatType.PRIVATE:
-        xx = await _.get_chat_member(chat_id,user_id)
+        xx = await app.get_chat_member(chat_id,user_id)
         if xx.privileges:    
             if check_chat:  
                 await rmchat_bot(chat_id)           
