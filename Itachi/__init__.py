@@ -5,6 +5,7 @@ import sys
 import asyncio
 from Itachi.config import *
 from pyrogram import Client
+import telegram.ext as tg
 from telethon.sessions import MemorySession
 from telethon import TelegramClient
 from Itachi.utils.quoteapi import Quotly
@@ -88,13 +89,25 @@ ALPHA = Client (
       bot_token=BOT_TOKEN
 )
 telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
+WORKERS = 8
+defaults = tg.Defaults(run_async=True)
+updater = tg.Updater(BOT_TOKEN, workers=WORKERS, use_context=True)
+dispatcher = updater.dispatcher
 async def init():
     LOG.print("Itachi Uchiha Bot Starting....")    
     await app.start()
     await ALPHA.start()
     await pbot.start()
     await telethn.start(bot_token=BOT_TOKEN)
-    
+    from Itachi.utils import (
+        CustomCommandHandler,
+        CustomMessageHandler,
+        CustomRegexHandler,
+    )
+    tg.RegexHandler = CustomRegexHandler
+    tg.CommandHandler = CustomCommandHandler
+    tg.MessageHandler = CustomMessageHandler
+
     x =  db.sudo.find().to_list(length=None)
     for i in await x :
         config.SUDO_USERS.append(i["user_id"])
