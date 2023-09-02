@@ -99,7 +99,7 @@ async def init():
     await ALPHA.start()
     await pbot.start()
     await telethn.start(bot_token=BOT_TOKEN)
-    from Itachi.utils import (
+    from Itachi.utils.ptb_helper import (
         CustomCommandHandler,
         CustomMessageHandler,
         CustomRegexHandler,
