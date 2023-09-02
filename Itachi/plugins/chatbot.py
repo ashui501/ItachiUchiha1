@@ -56,7 +56,7 @@ async def _addchat(app : Client, query : CallbackQuery):
         elif check_chat:
             await query.message.edit_caption("**Chatbot is already enabled in this chat.**")   
              
-@pgram.on_callback_query(filters.regex("rm_chat"))
+@Client.on_callback_query(filters.regex("rm_chat"))
 async def _rmchat(app : Client, query : CallbackQuery):
     user_id = query.from_user.id
     chat_id = query.message.chat.id
