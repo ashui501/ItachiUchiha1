@@ -62,12 +62,10 @@ async def main():
         LOG.print(f"Bot isn't able to send message to @{config.SUPPORT_CHAT} !")
     
     await idle()
-    LOG.print("Using long polling.")
-    updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)
-    updater.idle()
 
       
-    
+
+
 async def send_help(app,chat, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))    
@@ -260,8 +258,7 @@ async def donate(_, message):
                 await app.send_message(message.from_user.id,text=f"[Here Is The Donation Link]({config.DONATION_LINK})")
             except Unauthorized:                
                 await message.reply_text("**Contact Me In PM To Get Donation Information First!**")                                                                                               
-                                                                    
-         
+
 if __name__ == "__main__" :
     loop.run_until_complete(main())
     LOG.print("Stopped Client.") 
