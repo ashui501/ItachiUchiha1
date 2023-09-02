@@ -73,7 +73,7 @@ async def main():
                              photo=random.choice(ITACHI_PIC),
                              caption=strings.SUPPORT_SEND_MSG.format(platform.python_version(), pyrover, uptime)
                              )
-        await dispatcher.bot.send_message(config.OWNER_ID , "Started")
+        
       #  await pbot.send_message(config.OWNER_ID , "Ok")
     except Exception as e:
         LOG.print(f"{e}")
@@ -82,7 +82,7 @@ async def main():
     await idle()
 
       
-
+dispatcher.bot.send_message(config.OWNER_ID , "Started")
 def test(update: Update, context: CallbackContext):
     # pprint(eval(str(update)))
     # update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
