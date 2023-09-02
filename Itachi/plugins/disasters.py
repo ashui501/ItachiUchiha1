@@ -25,18 +25,7 @@ async def _addsudo(_, message):
 
 
 
-@Client.on_message(filters.command("akatsukis"))
-async def _devlist(_, message):
-    if message.from_user.id not in SUPREME_USERS:
-        return 
-    msg = "**♠ Akatsuki Users ♠\n**"
-    for m in set(DEV_USERS):
-        try:
-            mention = (await _.get_users(m)).mention
-            msg += f"• {mention}\n"
-        except Exception as e:
-            print(e)
-    return await message.reply_text(msg)
+
  
 
 
