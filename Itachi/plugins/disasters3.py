@@ -5,10 +5,8 @@ from Itachi.modules.pyro.extracting_id import extract_user_id
 from Itachi.modules.mongo.sudo_db import *
 from Itachi.modules.pyro.extracting_id import extract_user_id
 
-@Client.on_message(filters.command("kages"))
+@Client.on_message(filters.command("kages") & filters.user(SUPREME_USERS))
 async def _rmsudo(_, message):
-    if message.from_user.id not in SUPREME_USERS:
-        return 
     if not SUDO_USERS:
         return await message.reply_text("**There Is No Kage Users.**")
     msg = "**♠ Kage Users ♠\n**"
