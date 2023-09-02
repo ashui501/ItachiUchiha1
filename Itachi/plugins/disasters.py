@@ -8,18 +8,15 @@ from Itachi.modules.pyro.extracting_id import extract_user_id
 
 
 @Client.on_message(filters.command("addkage") & filters.user(DEV_USERS))
-async def _addsudo(_, message):
-    
+async def _addsudo(_, message):    
     user_id = await extract_user_id(message)
     if not user_id:
         return await message.reply_text("**Specify An User.**")
 
-    sudo_users = await get_sudo_list()
-    if user_id in sudo_users :
+    if user_id in SUDO_USERS:
         return await message.reply_text("**User Already In Kage.**") 
-    if  user_id in DEV_USERS:
-        return await message.reply_text("**This Is An Kage User.**") 
-    await add_sudo(user_id)
+    if user_id in DEV_USERS:
+        return await message.reply_text("**This Is An Akatsuki User.**") 
     if not user_id in SUDO_USERS:
         SUDO_USERS.append(user_id)
         SUPREME_USERS.append(user_id)
@@ -30,10 +27,8 @@ async def _rmsudo(_, message):
     user_id = await extract_user_id(message)
     if not user_id:
         return await message.reply_text("**Specify An User.**")
-    sudo_users = await get_sudo_list()
-    if user_id not in sudo_users :
+    if user_id not in SUDO_USERS:
         return await message.reply_text("**This User Isn't Kage User.**")  
-    await del_sudo(user_id)
     if user_id in SUDO_USERS:
         SUDO_USERS.remove(user_id)
         SUPREME_USERS.remove(user_id)
@@ -41,7 +36,7 @@ async def _rmsudo(_, message):
 
 
 
-@Client.on_message(filters.command("kagelist"))
+@Client.on_message(filters.command("kages"))
 async def _rmsudo(_, message):
     if message.from_user.id not in SUPREME_USERS:
         return 
@@ -56,7 +51,7 @@ async def _rmsudo(_, message):
             print(e)
     await message.reply_text(msg)
 
-@Client.on_message(filters.command("akatsukilist"))
+@Client.on_message(filters.command("akatsukis"))
 async def _devlist(_, message):
     if message.from_user.id not in SUPREME_USERS:
         return 
