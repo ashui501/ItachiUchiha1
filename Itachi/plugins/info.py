@@ -78,8 +78,8 @@ async def _info(_, message):
 
     if user_id == OWNER_ID:
         text += "\n**Sage of Six Path !!!**"
-    elif user_id in SUPREME_USERS:
-        text += "\n**Immune User**"
+    elif user_id in SUDO_USERS:
+        text += "\n**This Is Kage User**"
     elif user_id in CHAD:
         text += "\n**This Is Akatsuki User**"
 
@@ -154,13 +154,13 @@ async def _info(_, message):
     if reason:
         text += f"**• Gban Reason :** `{reason}`\n"
 
-    if user.status:
-        text += f"**• Last Seen :** `{user.status}`\n"
+    if user.status == enums.UserStatus.RECENTLY:
+        text += f"**• Last Seen :** `Recently`\n"
 
     if user_id == OWNER_ID:
         text += "\n**Sage of Six Path !!!**"
-    elif user_id in SUPREME_USERS:
-        text += "\n**Immune User**"
+    elif user_id in SUDO_USERS:
+        text += "\n**This Is Kage User**"
     elif user_id in CHAD:
         text += "\n**This Is Akatsuki User**"
 
