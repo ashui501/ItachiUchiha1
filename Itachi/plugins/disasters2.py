@@ -5,7 +5,7 @@ from Itachi.modules.pyro.extracting_id import extract_user_id
 from Itachi.modules.mongo.sudo_db import *
 from Itachi.modules.pyro.extracting_id import extract_user_id
 
-@Client.on_message(filters.command("rmkage") & filters.user(DEV_USERS))
+@Client.on_message(filters.command("rmkage") & filters.user(SUPREME_USERS))
 async def _rmsudo(_, message):
     user_id = await extract_user_id(message)
     if not user_id:
