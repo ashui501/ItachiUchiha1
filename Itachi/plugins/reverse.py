@@ -89,7 +89,7 @@ async def _reverse(_,msg):
       result = await Sauce(bot_token,file_id)
       if not result:
           return await text.edit(f"**API DOWN : @{SUPPORT_CHAT}**")
-      await text.edit('**Result ⇢** [{}]({})'.format(result['title'] , result['url']),disable_web_page_preview=True,reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Support",url=f"t.me/{SUPPORT_CHAT}")]]))
+      await text.edit('**Result ⇢** `{}`'.format(result['title']),disable_web_page_preview=True,reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Site",url=result['url'])]]))
 
       
 
