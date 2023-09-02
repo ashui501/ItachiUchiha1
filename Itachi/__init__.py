@@ -89,7 +89,7 @@ ALPHA = Client (
       bot_token=BOT_TOKEN
 )
 telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
-WORKERS = 8
+WORKERS = 9
 defaults = tg.Defaults(run_async=True)
 updater = tg.Updater(BOT_TOKEN, workers=WORKERS, use_context=True)
 dispatcher = updater.dispatcher
@@ -99,15 +99,6 @@ async def init():
     await ALPHA.start()
     await pbot.start()
     await telethn.start(bot_token=BOT_TOKEN)
-    from Itachi.utils.ptb_helper import (
-        CustomCommandHandler,
-        CustomMessageHandler,
-        CustomRegexHandler,
-    )
-    tg.RegexHandler = CustomRegexHandler
-    tg.CommandHandler = CustomCommandHandler
-    tg.MessageHandler = CustomMessageHandler
-
     x =  db.sudo.find().to_list(length=None)
     for i in await x :
         config.SUDO_USERS.append(i["user_id"])
