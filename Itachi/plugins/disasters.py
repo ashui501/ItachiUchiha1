@@ -24,20 +24,6 @@ async def _addsudo(_, message):
 
 
 
-@Client.on_message(filters.command("kages"))
-async def _rmsudo(_, message):
-    if message.from_user.id not in SUPREME_USERS:
-        return 
-    if not SUDO_USERS:
-        return await message.reply_text("**There Is No Kage Users.**")
-    msg = "**♠ Kage Users ♠\n**"
-    for m in set(SUDO_USERS):
-        try:
-            mention = (await _.get_users(int(m))).mention 
-            msg += f"• {mention}\n"
-        except Exception as e:
-            print(e)
-    await message.reply_text(msg)
 
 @Client.on_message(filters.command("akatsukis"))
 async def _devlist(_, message):
