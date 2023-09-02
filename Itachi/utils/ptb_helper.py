@@ -9,8 +9,6 @@ from pyrate_limiter import (
 
     Duration,
 
-    RequestRate,
-
     Limiter,
 
     MemoryListBucket,
