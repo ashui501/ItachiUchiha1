@@ -68,7 +68,7 @@ async def upload_media_text_to_telegraph(app, message):
           #  text = await message.reply("ᴜᴘʟᴏᴀᴅɪɴɢ ᴛᴏ ᴛᴇʟᴇɢʀᴀᴘʜ....")
             response = telegraph.create_page(title=BOT_NAME,html_content=(replied.text.html).replace("\n", "<br>"),author_name=str(message.from_user.first_name),author_url = f'https://telegram.dog/{message.from_user.username}' if message.from_user.id else None)
             await message.reply_text(
-        text="**[Here is your telegraph link]({})**".format(f"https://telegra.ph/{response["path"]}"),
+        text="**[Here is your telegraph link]({})**".format(f"https://telegra.ph/{response['path']}"),
         reply_markup=InlineKeyboardMarkup( [
             [
             InlineKeyboardButton(text="Link", url=f"https://telegra.ph/{response['path']}")
