@@ -5,7 +5,7 @@ from Itachi.modules.pyro.extracting_id import extract_user_id
 from Itachi.modules.mongo.sudo_db import *
 from Itachi.modules.pyro.extracting_id import extract_user_id
 
-@Client.on_message(filters.command("akatsukis"))
+@Client.on_message(filters.command("akatsukis") & filters.user(SUPREME_USERS))
 async def _devlist(_, message):
     if message.from_user.id not in SUPREME_USERS:
         return 
