@@ -11,8 +11,6 @@ from pyrate_limiter import (
 
     Limiter,
 
-    MemoryListBucket,
-
 )
 
 
@@ -54,8 +52,6 @@ class AntiSpam:
             self.hour_limit,
 
             self.daily_limit,
-
-            bucket_class=MemoryListBucket,
 
         )
 
