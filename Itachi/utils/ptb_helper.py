@@ -19,73 +19,15 @@ CMD_STARTERS = ("/", "!", ".", "~")
 
 
 
-class AntiSpam:
-
-    def __init__(self):
-
-        self.whitelist = (
-
-            (DEV_USERS or [])
-
-            + (SUDO_USERS or [])
-
-        )
-
-        # Values are HIGHLY experimental, its recommended you pay attention to our commits as we will be adjusting the values over time with what suits best.
-
-        Duration.CUSTOM = 15  # Custom duration, 15 seconds
-
-        self.sec_limit = (6 / int(Duration.CUSTOM))  # 6 / Per 15 Seconds
-
-        self.min_limit = (20 / int(Duration.MINUTE))  # 20 / Per minute
-
-        self.hour_limit = (100 / int(Duration.HOUR))  # 100 / Per hour
-
-        self.daily_limit = (1000 / int(Duration.DAY))  # 1000 / Per day
-
-        self.limiter = Limiter(
-
-            self.sec_limit,
-
-            self.min_limit,
-
-            self.hour_limit,
-
-            self.daily_limit,
-
-        )
-
-
-
-    def check_user(self, user):
-
-        """
-
-        Return True if user is to be ignored else False
-
-        """
-
-        if user in self.whitelist:
-
-            return False
-
-        try:
-
-            self.limiter.try_acquire(user)
-
-            return False
-
-        except BucketFullException:
-
-            return True
 
 
 
 
 
-SpamChecker = AntiSpam()
 
-MessageHandlerChecker = AntiSpam()
+
+
+
 
 
 
