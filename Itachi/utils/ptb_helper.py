@@ -35,13 +35,13 @@ class AntiSpam:
 
         Duration.CUSTOM = 15  # Custom duration, 15 seconds
 
-        self.sec_limit = (6 / Duration.CUSTOM)  # 6 / Per 15 Seconds
+        self.sec_limit = (6 / int(Duration.CUSTOM))  # 6 / Per 15 Seconds
 
-        self.min_limit = (20 / Duration.MINUTE)  # 20 / Per minute
+        self.min_limit = (20 / int(Duration.MINUTE))  # 20 / Per minute
 
-        self.hour_limit = (100 / Duration.HOUR)  # 100 / Per hour
+        self.hour_limit = (100 / int(Duration.HOUR))  # 100 / Per hour
 
-        self.daily_limit = (1000 / Duration.DAY)  # 1000 / Per day
+        self.daily_limit = (1000 / int(Duration.DAY))  # 1000 / Per day
 
         self.limiter = Limiter(
 
