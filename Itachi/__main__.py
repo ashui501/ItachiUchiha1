@@ -8,6 +8,19 @@ import random
 from Itachi import config
 import strings
 import importlib
+from telegram import ParseMode, Update
+from telegram.error import (
+    BadRequest,
+    Unauthorized,
+)
+from telegram.ext import (
+    CallbackContext,
+    CommandHandler,
+    Filters,
+    MessageHandler,
+)
+from telegram.ext.dispatcher import DispatcherHandlerStop
+
 from pyrogram.types import (
     InlineKeyboardButton, 
     InlineKeyboardMarkup,
@@ -26,7 +39,7 @@ from Itachi.modules.rules import send_rules
 from unidecode import unidecode
 from Itachi import StartTime , get_readable_time
 loop = asyncio.get_event_loop() 
-
+bot_name = f"{dispatcher.bot.first_name}"
 ITACHI_PIC = ["https://telegra.ph/file/f546e6681709b03255f00.jpg", "https://telegra.ph/file/fa1aab224fb2cbc08f47b.jpg", "https://telegra.ph/file/8b78e64eda3f0af73e186.jpg", "https://telegra.ph/file/1355fde2a2c876810ad02.jpg", "https://telegra.ph/file/607c2911f1dc48d40a4e9.jpg", "https://telegra.ph/file/14043c792ee8e71c4eeb6.jpg"]
 uptime = get_readable_time((time.time() - StartTime))
 WEBHOOK = False
@@ -50,12 +63,17 @@ async def main():
     LOG.print(f"Loaded Modules :-\n{bot_modules}")
     print()
     LOG.print(f"{BOT_NAME} Started. ")
+    try:                                                                    
+        LOG.print("Using long polling.")
+        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True)    
+    except:
+        LOG.print("Ptb died")
     try:
         await app.send_photo(f"@{config.SUPPORT_CHAT}",
                              photo=random.choice(ITACHI_PIC),
                              caption=strings.SUPPORT_SEND_MSG.format(platform.python_version(), pyrover, uptime)
                              )
-        await ALPHA.send_message(config.OWNER_ID , "Started")
+        await dispatcher.bot.send_message(config.OWNER_ID , "Started")
       #  await pbot.send_message(config.OWNER_ID , "Ok")
     except Exception as e:
         LOG.print(f"{e}")
@@ -65,6 +83,14 @@ async def main():
 
       
 
+def test(update: Update, context: CallbackContext):
+    # pprint(eval(str(update)))
+    # update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
+    update.effective_message.reply_text("Yamete Kudasai..")
+    print(update.effective_message)
+
+test_handler = CommandHandler("test", test, run_async=True)
+dispatcher.add_handler(test_handler)
 
 async def send_help(app,chat, text, keyboard=None):
     if not keyboard:
