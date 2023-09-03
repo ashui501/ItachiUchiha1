@@ -7,4 +7,4 @@ __help__ = """
 
 ♠  `/Paste` : Reply to a message to save it in haste bin.
 
-""
+"""
