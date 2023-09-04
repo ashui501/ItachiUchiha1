@@ -1,9 +1,9 @@
 import asyncio
 from pyrogram import filters , Client as app
-from Itachi import app as pbot
+from Itachi import app as pbot , db
 from Itachi.config import SUPER_USERS as DRAGONS
 import Itachi.modules.mongo.karma_mongo as sql
-from Itachi.modules.mongo.karma_mongo import karma_statusdb as karmadb
+karmadb = db.karma
 from typing import Dict, List, Union
 
 karma_positive_group = 3
