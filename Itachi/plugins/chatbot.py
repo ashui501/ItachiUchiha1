@@ -114,6 +114,6 @@ async def chatbot(_, message):
         await asyncio.sleep(0.5)
         to_reply = results["response"]
         if "safone" in to_reply.lower():
-            to_reply = to_reply.replace("Safone","Alpha Coder")
-            to_reply = to_reply.replace("t.me/asmsafone","t.me/LieutenantOwner")
+            to_reply = to_reply.replace("Safone","⏤͟͞ 𝙉𝘼𝙉𝙊™ 🇮🇳")
+            to_reply = to_reply.replace("t.me/asmsafone","t.me/GenXNano")
         await message.reply_text(to_reply)
