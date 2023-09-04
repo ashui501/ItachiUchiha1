@@ -1,17 +1,17 @@
 LOCATION = [
     "https://graph.org/file/9a150da51ac9e8c6f0a03.jpg",
     "Itachi/resources/welcome_temp/minimal1.jpg",
-    "./Itachi/resources/welcome_temp/minimal2.jpg",
-    "./Itachi/resources/welcome_temp/AnimeMinimal1.jpg",
-    "./Itachi/resources/welcome_temp/AnimeMinimal2.jpg",
-    "./Itachi/resources/welcome_temp/AnimeMinimal3.jpg",
-    "./Itachi/resources/welcome_temp/GamingMinimal.jpg",
-    "./Itachi/resources/welcome_temp/Sun.jpg",
-    "./Itachi/resources/welcome_temp/Gaming.jpg",
-    "./Itachi/resources/welcome_temp/WS.jpg",
-    "./Itachi/resources/welcome_temp/Nezuko.jpg",
-    "./Itachi/resources/welcome_temp/AnimeGirl1.jpg",
-    "./Itachi/resources/welcome_temp/AnimeGirl2.jpg"
+    "Itachi/resources/welcome_temp/minimal2.jpg",
+    "Itachi/resources/welcome_temp/AnimeMinimal1.jpg",
+    "Itachi/resources/welcome_temp/AnimeMinimal2.jpg",
+    "Itachi/resources/welcome_temp/AnimeMinimal3.jpg",
+    "Itachi/resources/welcome_temp/GamingMinimal.jpg",
+    "Itachi/resources/welcome_temp/Sun.jpg",
+    "Itachi/resources/welcome_temp/Gaming.jpg",
+    "Itachi/resources/welcome_temp/WS.jpg",
+    "Itachi/resources/welcome_temp/Nezuko.jpg",
+    "Itachi/resources/welcome_temp/AnimeGirl1.jpg",
+    "Itachi/resources/welcome_temp/AnimeGirl2.jpg"
     ]
 
 WEL_PIC = [
