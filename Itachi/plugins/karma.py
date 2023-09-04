@@ -28,7 +28,7 @@ async def alpha_to_int(user_id_alphabet: str) -> int:
     user_id = int(user_id)
     return user_id
 async def get_karmas_count() -> dict:
-    chats = karmadb.find({"chat_id": {"$lt": 0}})
+    chats = await karmadb.find({"chat_id": {"$lt": 0}})
     if not chats:
         return {}
     chats_count = 0
@@ -43,7 +43,7 @@ async def get_karmas_count() -> dict:
 
 
 async def user_global_karma(user_id) -> int:
-    chats = karmadb.find({"chat_id": {"$lt": 0}})
+    chats = await karmadb.find({"chat_id": {"$lt": 0}})
     if not chats:
         return 0
     total_karma = 0
@@ -54,8 +54,8 @@ async def user_global_karma(user_id) -> int:
     return total_karma
 
 
-async def get_karmas(chat_id):
-    karma = karmadb.find_one({"chat_id": chat_id})
+async def get_karmas(chat_id) -> Dict[str, int]:
+    karma = await karmadb.find_one({"chat_id": chat_id})
     if not karma["karma"]:
         return {}
     return karma["karma"]
@@ -72,28 +72,28 @@ async def update_karma(chat_id: int, name: str, karma: dict):
     name = name.lower().strip()
     karmas = await get_karmas(chat_id)
     karmas[name] = karma
-    karmadb.update_one(
+    await karmadb.update_one(
         {"chat_id": chat_id}, {"$set": {"karma": karmas}}, upsert=True
     )
 
 async def is_karma_on(chat_id: int) -> bool:
-    chat = karmadb.find_one({"chat_id": chat_id})
+    chat = await karmadb.find_one({"chat_id": chat_id})
     if not chat:
         return True
     return False
 
 async def karma_on(chat_id: int):
-    is_karma = is_karma_on(chat_id)
+    is_karma = await is_karma_on(chat_id)
     if is_karma:
         return
-    return karmadb.delete_one({"chat_id": chat_id})
+    return await karmadb.delete_one({"chat_id": chat_id})
 
 
 async def karma_off(chat_id: int):
-    is_karma = is_karma_on(chat_id)
+    is_karma = await is_karma_on(chat_id)
     if not is_karma:
         return
-    return karmadb.insert_one({"chat_id": chat_id})
+    return await karmadb.insert_one({"chat_id": chat_id})
 
 
 
