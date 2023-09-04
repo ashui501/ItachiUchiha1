@@ -5,8 +5,8 @@ from Itachi.config import OWNER_ID, SUPPORT_CHAT,UPDATES_CHANNEL
 
 PM_START_TEXT = """
 ────「 {} 」────
-Hola[!](https://telegra.ph/file/64eab10c10b0242004b86.jpg) {} ,
-I am an Anime themed advance group management bot based Itachi Uchiha ✨
+Hola[!](https://telegra.ph/file/986b76680ebc9d88f5c53.jpg) {} ,
+I am an Anime themed advance group management bot  ✨
 ➖➖➖➖➖➖➖➖➖➖➖➖➖
 ‣ Uptime: {}
 ‣ Python: {}
@@ -24,7 +24,7 @@ SUPPORT_SEND_MSG = """
 
 LOG_MSG = "Itachi Uchiha Started ✨"
 
-HELP_STRINGS = f"""**
+HELP_STRINGS = f"""
 Hey there! My name is Itachi Uchiha.
 
 Main commands available:
@@ -35,7 +35,7 @@ Main commands available:
 
 • /help <Module Name>: PM's you info about that module.
 
-• Click on below buttons to access commands of {BOT_NAME}.**
+• Click on below buttons to access commands of {BOT_NAME}.
 """
 
 START_BUTTONS = [
