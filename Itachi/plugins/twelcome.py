@@ -80,7 +80,7 @@ async def _welmem(_, message):
             os.remove(pic)
     
 
-@Client.on_callback_query(filters.regex(pattern=r"open#(.*)"))
+@app.on_callback_query(filters.regex(pattern=r"open#(.*)"))
 async def _temp(_, query):
     chat_id = query.message.chat.id
     user_id = query.from_user.id
@@ -90,7 +90,7 @@ async def _temp(_, query):
     await query.message.reply_photo(LOCATION[index],reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("• Preview •",url=WEL_PIC[index])],[InlineKeyboardButton("• Save •", callback_data=f"save#{user_id}#{index}")]]))      
     await query.message.delete() 
             
-@Client.on_callback_query(filters.regex(pattern=r"save#(.*)"))
+@app.on_callback_query(filters.regex(pattern=r"save#(.*)"))
 async def _temp(_, query):
     chat_id = query.message.chat.id        
     user_id = query.from_user.id 
@@ -121,7 +121,7 @@ async def _well(_, message):
         )            
     
 
-@Client.on_callback_query(filters.regex(pattern=r"welnxt#(.*)"))
+@app.on_callback_query(filters.regex(pattern=r"welnxt#(.*)"))
 async def _temp(_, query):
     await query.message.delete()
     chat_id = query.message.chat.id        
@@ -164,7 +164,7 @@ async def _temp(_, query):
             ]
         ] ),
         )  
-@Client.on_callback_query(filters.regex(pattern=r"welbck#(.*)"))
+@app.on_callback_query(filters.regex(pattern=r"welbck#(.*)"))
 async def _temp(_, query):
     await query.message.delete()
     chat_id = query.message.chat.id        
@@ -212,9 +212,10 @@ async def _delwel(_, message):
     chat_id = message.chat.id
     bsdk = await is_welcome_on(chat_id)
     if not bsdk:
-        await message.reply_text("**Welcome template isn't enabled.**")
-    del_welcome(chat_id)
-    await message.reply_text("**Welcome template disabled.**")
+        return await message.reply_text("**Welcome template isn't enabled.**")
+    else:
+        del_welcome(chat_id)
+        await message.reply_text("**Welcome template disabled.**")
         
 
 
