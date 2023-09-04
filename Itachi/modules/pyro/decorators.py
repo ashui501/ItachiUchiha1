@@ -13,7 +13,7 @@ from dotmap import DotMap
 
 DISABLE_COMMANDS = []
 COMMANDS_LIST = []
-ERROR_LOG = "MikuLog"
+ERROR_LOG = "MadaraUchihaBotLog"
 HANDLERS = ["/","?","!"]
 
 
