@@ -35,7 +35,7 @@ from rich.table import Table
 from pyrogram.enums import ParseMode,ChatType
 from pyrogram import __version__ as pyrover
 from Itachi.modules import ALL_MODULES
-from Itachi.modules.rules import send_rules
+#from Itachi.modules.rules import send_rules
 from unidecode import unidecode
 from Itachi import StartTime , get_readable_time
 loop = asyncio.get_event_loop() 
