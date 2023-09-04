@@ -15,11 +15,11 @@ async def circle(pfp, size=(215, 215)):
 async def minimal1(pfp,chat,id):
     if len(chat) > 21:
         chat = chat[0:18] + ".."
-    temp = Image.open("./Itachi/resources/welcome_temp/minimal1.jpg")
+    temp = Image.open("Itachi/resources/welcome_temp/minimal1.jpg")
     pfp = Image.open(pfp).convert("RGBA")
     pfp = await circle(pfp,(363,363))
-    m_font = ImageFont.truetype("./Itachi/resources/monumentextended-regular.otf",35)    
-    i_font = ImageFont.truetype("./Itachi/resources/monumentextended-regular.otf",20)    
+    m_font = ImageFont.truetype("Itachi/resources/monumentextended-regular.otf",35)    
+    i_font = ImageFont.truetype("Itachi/resources/monumentextended-regular.otf",20)    
     nice = temp.copy()
     nice.paste(pfp, (58, 131), pfp)
     draw = ImageDraw.Draw(nice)
@@ -32,8 +32,8 @@ async def minimal1(pfp,chat,id):
                 text=str(id),
                 font=i_font,
                 fill=(275,275,275))
-    nice.save(f"./Itachi/resources/downloads/nice{id}.png")
-    return f"./Itachi/resources/downloads/nice{id}.png"
+    nice.save(f"Itachi/resources/downloads/nice{id}.png")
+    return f"Itachi/resources/downloads/nice{id}.png"
 
 
 async def minimal2(pfp,chat,id):
