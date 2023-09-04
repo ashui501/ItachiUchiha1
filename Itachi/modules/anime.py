@@ -264,13 +264,13 @@ async def _manga(_, message):
         if title:
             msg += f"**💫Title ›** {title}"
             if title_native:
-                msg += f"(`{title_native}`)"
+                msg += f"({title_native})"
         if start_date:
-            msg += f"\n\n**💤 Start Year ›** `{start_date}`"
+            msg += f"\n\n**💤 Start Year ›** {start_date}"
         if status:
-            msg += f"\n**📊 Status ›** `{status}`"
+            msg += f"\n**📊 Status ›** {status}"
         if score:
-            msg += f"\n**⚙️ Score ›** `{score}`"
+            msg += f"\n**⚙️ Score ›** {score}"
         msg += '\n**♾️ Genres ›** '
         for x in json.get('genres', []):
             msg += f"{x}, "
