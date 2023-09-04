@@ -6,13 +6,14 @@ from Itachi.config import OWNER_ID, SUPPORT_CHAT,UPDATES_CHANNEL
 PM_START_TEXT = """
 ────「 {} 」────
 Hola[!](https://telegra.ph/file/986b76680ebc9d88f5c53.jpg) {} ,
-I am an Anime themed advance group management bot  ✨
-➖➖➖➖➖➖➖➖➖➖➖➖➖
+My Name Is Itachi Uchiha◎! ㅤ
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+◍ I Am  a Group Management Bot , Built For Weebs.
 ‣ Uptime: {}
 ‣ Python: {}
 ‣ Pyrogram: {}
-➖➖➖➖➖➖➖➖➖➖➖➖➖
-‣ Keep Your Group Secure From Spammers by Adding me ✨
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖
+◍ I Am Specialized In Managing Groups Of Anime Communities⚝!
 """
 
 SUPPORT_SEND_MSG = """
