@@ -1,10 +1,9 @@
-from Itachi import app,BOT_USERNAME
 from pyrogram import filters , Client
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton 
 from pyrogram.errors import BadRequest 
 from Itachi.modules.pyro.status import user_admin,user_can_change_info 
 from Itachi.modules.mongo.rules_db import *
-
+from Itachi import app, BOT_USERNAME
 
 
 
