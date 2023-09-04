@@ -3,6 +3,7 @@ from pyrogram import filters , Client as app
 from Itachi import app as pbot
 from Itachi.config import SUPER_USERS as DRAGONS
 import Itachi.modules.mongo.karma_mongo as sql
+from typing import Dict, List, Union
 
 karma_positive_group = 3
 karma_negative_group = 4
@@ -52,7 +53,7 @@ async def user_global_karma(user_id) -> int:
     return total_karma
 
 
-async def get_karmas(chat_id: int) -> dict[str, int]:
+async def get_karmas(chat_id: int) -> Dict[str, int]:
     karma = karmadb.find_one({"chat_id": chat_id})
     if not karma:
         return {}
