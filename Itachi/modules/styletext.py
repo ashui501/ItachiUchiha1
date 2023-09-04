@@ -1,4 +1,4 @@
-from Shikimori import dispatcher
+from Itachi import dispatcher
 from telegram.ext import CommandHandler
 from telegram import ParseMode
 
