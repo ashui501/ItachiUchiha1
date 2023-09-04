@@ -55,7 +55,7 @@ async def check_temp(chat_id,pfp,name,chat_title,user_id,username,count):
     return welpic 
   
 
-@Client.on_message(filters.new_chat_members & filters.group,group=welcome_watcher)
+@app.on_message(filters.new_chat_members & filters.group,group=welcome_watcher)
 async def _welmem(_, message):    
     chat_id = message.chat.id   
     bsdk = await is_welcome_on(chat_id)
