@@ -5,7 +5,7 @@ load_dotenv()
 
 API_ID = int(getenv('API_ID','18770647'))
 API_HASH = getenv('API_HASH','ed11b8af8b51418dbac60b456d1429a7')
-BOT_TOKEN = getenv('BOT_TOKEN','5520008350:AAE351KQEn4jzOwwvenIEUeRF7mhliN8ikw')
+BOT_TOKEN = getenv('BOT_TOKEN','5520008350:AAFLRar-Mm6ZDXgvCokqRBXpOR_YljnWxsU')
 MONGO_DB_URL = getenv('MONGO_DB_URL','mongodb+srv://Itachi:Itachi_123@itachi.wz6e5.mongodb.net/?retryWrites=true&w=majority')
 SUPPORT_CHAT = getenv('SUPPORT_CHAT','UchihaPoliceSup')
 UPDATES_CHANNEL = getenv('UPDATES_CHANNEL','UchihaPoliceUpdate')
