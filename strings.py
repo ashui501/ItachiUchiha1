@@ -4,8 +4,8 @@ from Itachi.config import OWNER_ID, SUPPORT_CHAT,UPDATES_CHANNEL
 
 
 PM_START_TEXT = """
-────「 {} 」────
-Hola[!](https://telegra.ph/file/986b76680ebc9d88f5c53.jpg) {} ,
+────「 `{}` 」────
+Hola[!](https://telegra.ph/file/32223c0ba9a062c36cfb2.jpg) {} ,
 My Name Is Itachi Uchiha◎! ㅤ
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 ◍ I Am  a Group Management Bot , Built For Weebs.
