@@ -54,14 +54,14 @@ async def user_global_karma(user_id) -> int:
     return total_karma
 
 
-async def get_karmas(chat_id: int) -> Dict[str, int]:
+async def get_karmas(chat_id):
     karma = karmadb.find_one({"chat_id": chat_id})
     if not karma:
         return {}
     return karma["karma"]
 
 
-async def get_karma(chat_id: int, name: str) -> Union[bool, dict]:
+async def get_karma(chat_id: int, name: str):
     name = name.lower().strip()
     karmas = await get_karmas(chat_id)
     if name in karmas:
