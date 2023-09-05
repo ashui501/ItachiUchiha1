@@ -36,7 +36,7 @@ from Itachi import app as pgram ,BOT_USERNAME
 
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
-LOG_CHANNEL = "MikuLog"
+LOG_CHANNEL = "MadaraUchihaBotLog"
 http = httpx.AsyncClient(
     http2=True,
     timeout=httpx.Timeout(40),)
