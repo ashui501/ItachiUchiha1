@@ -34,9 +34,9 @@ async def shorten(description, info='anilist.co'):
     msg = ""
     if len(description) > 700:
         description = description[0:500] + '....'
-        msg += f"\n**🗒 Description ›** `_{description}_`[Read More]({info})"
+        msg += f"\n**🗒 Description ›** _{description}_ [Read More]({info})"
     else:
-        msg += f"\n**🗒 Description ›**`_{description}_`"
+        msg += f"\n**🗒 Description ›** _{description}_ "
     return msg
 
 async def t(milliseconds: int) -> str:
@@ -182,7 +182,7 @@ async def _anime(_, message):
 **📊 Status ›** {json['status']}
 **✨ Episodes ›** {json.get('episodes', 'N/A')}
 
-**🕐 Duration ›** {json.get('duration', 'N/A')} ᴘᴇʀ ᴇᴘ.
+**🕐 Duration ›** {json.get('duration', 'N/A')} Per EP.
 **📆 Release Year ›** {json['startDate']['year']}
 **🌟 Score ›**: {json['averageScore']}
 
