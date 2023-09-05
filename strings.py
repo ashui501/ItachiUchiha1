@@ -9,9 +9,6 @@ Hola[!](https://telegra.ph/file/32223c0ba9a062c36cfb2.jpg) {} ,
 My Name Is Itachi Uchiha◎! ㅤ
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 ◍ I Am  a Group Management Bot , Built For Weebs.
-‣ Uptime: {}
-‣ Python: {}
-‣ Pyrogram: {}
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 ◍ I Am Specialized In Managing Groups Of Anime Communities⚝!
 """
@@ -31,11 +28,8 @@ Hey there! My name is Itachi Uchiha.
 Main commands available:
 
 • Click on the button bellow to get description about specifics pcommand.
-
 • If You Face Any Problems Please Report It To Our Support Group.
-
 • /help <Module Name>: PM's you info about that module.
-
 • Click on below buttons to access commands of {BOT_NAME}.
 """
 
