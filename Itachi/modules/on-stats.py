@@ -4,7 +4,7 @@ from Itachi.config import SUPPORT_CHAT
 from Itachi.modules.mongo.users_db import *
 from Itachi.modules.mongo.chats_db import *
 
-LOG = "@MikuLog"
+LOG = "MadaraUchihaBotLog"
 us = """
 #ITACHI
 #NEW_USER
