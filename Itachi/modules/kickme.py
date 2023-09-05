@@ -53,7 +53,7 @@ def banme(update: Update, context: CallbackContext):
 
 
 
-KICKME_HANDLER = DisableAbleCommandHandler(["kickme", "punchme"], punchme, filters=Filters.chat_type.groups, run_async=True)
+KICKME_HANDLER = CommandHandler(["kickme", "punchme"], punchme, filters=Filters.chat_type.groups, run_async=True)
 BANME_HANDLER = CommandHandler("banme", banme, run_async=True, filters=Filters.chat_type.groups)
 
 
