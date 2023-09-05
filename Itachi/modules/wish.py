@@ -1,7 +1,5 @@
 import random
-
 from telegram import ChatAction, ParseMode
-
 from Itachi import dispatcher
 from Itachi.modules.disable import DisableAbleCommandHandler
 
@@ -63,9 +61,9 @@ dispatcher.add_handler(wish_handler)
 
 
 __help__ = """
-ᴀ ғᴜɴ ᴡᴀʏ ᴛᴏ ɢᴇᴛ ʏᴏᴜʀ ᴡɪsʜ ɢʀᴀɴᴛᴇᴅ...
+fun way to get your wish granted...
 
-❍ /wish *:* ᴍᴀᴋᴇ ᴀ ᴡɪsʜ ᴀɴᴅ sᴇᴇ ɪᴛs ᴘᴏssɪʙɪʟɪᴛʏ.
+❍ /wish *:* Make a wish see its possibility.
 """
 
-__mod_name__ = "𝚆ɪsʜ"
+__mod_name__ = "Wish 🧞‍♀"
