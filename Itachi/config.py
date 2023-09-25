@@ -15,6 +15,7 @@ DEV_USERS = list(map(int, getenv("DEV_USERS", "6198858059").split()))
 SUDO_USERS = list(map(int, getenv("SUDO_USERS", "6393014348").split()))
 ARQ_API_KEY = getenv('ARQ_API_KEY','DARMXR-EKRMBT-BHPDOP-UASHHF-ARQ')
 DONATION_LINK = getenv('DONATION_LINK','https://t.me/GenXNano')
+COMMAND_HANDLER = getenv('COMMAND_HANDLER','/')
 SUPER_USERS = DEV_USERS + SUDO_USERS
 if OWNER_ID not in DEV_USERS:
     DEV_USERS.append(OWNER_ID)
