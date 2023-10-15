@@ -19,32 +19,7 @@ from Itachi import (
     app
 )
 from Itachi.config import COMMAND_HANDLER
-from Itachi.utils.data_parser import (
-    get_all_genres,
-    get_all_tags,
-    get_studio_animes,
-    get_studios,
-    get_top_animes,
-    get_user_activity,
-    get_user_favourites,
-    toggle_favourites,
-    get_anime,
-    get_airing,
-    get_anilist,
-    get_character,
-    get_additional_info,
-    get_manga,
-    browse_,
-    get_featured_in_lists,
-    update_anilist,
-    get_user,
-    ANIME_DB,
-    MANGA_DB,
-    CHAR_DB,
-    AIRING_DB,
-    STUDIO_DB,
-    GUI
-)
+
 from Itachi.utils.helper import (
     clog,
     check_user,
