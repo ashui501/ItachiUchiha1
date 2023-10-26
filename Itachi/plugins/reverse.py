@@ -19,8 +19,8 @@ from bs4 import BeautifulSoup
 import json
 
 # Your bot token
-bot_token = "YOUR_BOT_TOKEN"
-SUPPORT_CHAT = "YOUR_SUPPORT_CHAT"
+bot_token = "5520008350:AAGPmq6TBfqZJ0LFyArDVfmpMev3QRH3ukg"
+SUPPORT_CHAT = "UchihaPolice_Support"
 
 # Function to get the file ID from a message
 async def get_file_id_from_message(msg):
